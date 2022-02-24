@@ -1,7 +1,14 @@
+/*
+main color
+*/
+
 :root {
     --main-color: #003a5a;
 }
 
+/*
+index.html
+*/
 
 body {
     background-color: #f9f9f8 !important;
