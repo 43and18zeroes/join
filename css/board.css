@@ -16,10 +16,17 @@
     height: 100%;
 }
 
-
+.board__space {
+    display: none;
+}
 
 @media only screen and (max-width: 992px) {
     .board__row {
-        height: 50%;
+        height: calc(50% - 10px);
+    }
+
+    .board__space {
+        display: block;
+        height: 15px;
     }
   }
