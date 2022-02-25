@@ -1,4 +1,4 @@
-setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever/');
+setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
 
 let allTasks = [];
 
