@@ -30,7 +30,7 @@ function renderAddTask() {
 
     <div class="form-control description-section">
       <label for="description">Description</label>
-      <input type="text" id="description" placeholder="Task description">
+      <textarea placeholder="Type in your description..."></textarea>
     </div>
 
     <div class="form-control description-section">
@@ -39,9 +39,11 @@ function renderAddTask() {
         <img class="profile-img" src="../img/imgAddy.jpg">
         <img class="profile-img icon" src="../img/icons8-plus.png">
       </div>
-      
+      <div class="buttons">
+        <button onclick="cancel()" id="cancel">Cancel</button>
+        <button onclick="createTask()" id="createTask">Create Task</button>
+      </div>
     </div>
-
   </form>
  `;
 }

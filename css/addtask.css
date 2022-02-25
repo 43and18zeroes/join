@@ -19,9 +19,10 @@ header {
 }
 
 .form-control {
+  background-color: ;
   display: flex !important;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 45%;
   height: 100px;
   margin: 10px;
 }
@@ -29,11 +30,25 @@ header {
 .form-control label {
   color: var(--main-color);
   font-weight: bold;
+  margin-bottom: 10px
 }
 
 input {
   height: 60px;
   max-width: 300px;
+}
+
+.description-section {
+  height: 200px;
+}
+
+.description-section textarea {
+  height: 200px;
+  resize: none;
+}
+
+.profiles {
+  margin: 20px 0;
 }
 
 .profiles .icon {
@@ -49,4 +64,28 @@ input {
   border-radius: 50%;
   width: 60px;
   object-fit: cover;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+
+button {
+  color: var(--main-color);
+  height: 50px;
+  margin-left: 40px;
+  border: unset;
+  background-color: unset;
+  font-weight: bold;
+}
+
+#createTask {
+  margin-left: 40px;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  color: white;
+  padding: 10px 20px;
 }
