@@ -1,0 +1,36 @@
+header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.smallText {
+  color: var(--main-color);
+  font-size: 12px;
+}
+
+.form {
+  border-radius: 10px;
+  background-color: rgba(211, 211, 211, 0.473);
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-control {
+  display: flex !important;
+  flex-direction: column;
+  max-width: 400px;
+  height: 100px;
+  margin: 20px;
+}
+
+.form-control label {
+  color: var(--main-color);
+}
+
+input {
+  height: 60px;
+  max-width: 300px;
+}
