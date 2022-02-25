@@ -22,6 +22,7 @@ header {
   background-color: ;
   display: flex !important;
   flex-direction: column;
+  min-width: 300px;
   max-width: 45%;
   height: 100px;
   margin: 10px;
@@ -36,6 +37,10 @@ header {
 input {
   height: 60px;
   max-width: 300px;
+}
+
+select {
+  height: 60px;
 }
 
 .description-section {
