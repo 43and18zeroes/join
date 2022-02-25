@@ -23,18 +23,22 @@ function renderAddTask() {
       <input type="text" id="category" placeholder="Management">
     </div>
 
-    <div class="form-control">
+    <div class="form-control ">
       <label for="urgency">Urgency</label>
       <input type="text" id="urgency" placeholder="High">
     </div>
 
-    <div class="form-control">
-      <label for="description"></label>
+    <div class="form-control description-section">
+      <label for="description">Description</label>
       <input type="text" id="description" placeholder="Task description">
     </div>
 
-    <div class="form-control">
+    <div class="form-control description-section">
       <label for="assignedTo">Assigned To</label>
+      <div id="profiles" class="profiles">
+        <img class="profile-img" src="../img/imgAddy.jpg">
+        <img class="profile-img icon" src="../img/icons8-plus.png">
+      </div>
       
     </div>
 
