@@ -1,3 +1,17 @@
+.board__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.board__section h2 {
+    flex: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
 .board__area {
-    background-color: blue;
+    flex: 1;
+    background-color: var(--secondary-color);
+    height: 100%;
 }
