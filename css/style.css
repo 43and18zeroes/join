@@ -81,10 +81,11 @@ main {
     height: 100%;
 }
 
-@media only screen and (max-width: 510px) {
+@media only screen and (max-width: 768px) {
     .container {
         margin-top: 0;
         padding: 0 !important;
+        max-width: 100% !important;
     }
 
     .appcard {
