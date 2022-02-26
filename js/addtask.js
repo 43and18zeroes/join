@@ -1,4 +1,3 @@
-let tasks;
 let profiles = [{
     'name': 'Addy W',
     'email': 'soundso@email.com'
@@ -21,10 +20,10 @@ function renderAddTask() {
     <span class="smallText">Learning Management System Project</span>
   </header>
 
-  <form id="form" class="form" onsubmit="createTask()">
+  <form id="form" class="form">
     <div class="form-control">
-      <label for="title">Title</label>
-      <input type="text" id="title" placeholder="Management meeting preparation">
+      <label for="title" >Title</label>
+      <input type="text" id="title required" placeholder="Management meeting preparation">
     </div>
 
     <div class="form-control">
@@ -56,13 +55,13 @@ function renderAddTask() {
 
     <div class="form-control description-section">
       <label for="description">Description</label>
-      <textarea placeholder="Type in your description..."></textarea>
+      <textarea id="description"  placeholder="Type in your description..."></textarea>
     </div>
 
     <div class="form-control description-section">
-      <label for="assignedTo">Assigned To</label>
+      <label for="profile">Assigned To</label>
       <div id="profiles" class="profiles">
-        <img class="profile-img" src="../img/imgAddy.jpg">
+        <img id="profile" class="profile-img" src="../img/imgAddy.jpg">
         <img class="profile-img icon" src="../img/icons8-plus.png">
       </div>
       <div class="buttons">
@@ -72,4 +71,28 @@ function renderAddTask() {
     </div>
   </form>
  `;
+}
+
+
+function createTask() {
+  let title = document.getElementById('title');
+  let date = document.getElementById('date');
+  let category = document.getElementById('category');
+  let urgency = document.getElementById('urgency');
+  let description = document.getElementById('description');
+
+  let task = {
+    'title': title.value,
+    'date': date.value,
+    'category': category.value,
+    'urgency': urgency.value,
+    'description': description.value
+  };
+
+  console.log(task)
+}
+
+async function init() {
+  await downloadFromServer();
+  allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }

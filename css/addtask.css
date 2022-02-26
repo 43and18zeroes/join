@@ -19,7 +19,6 @@ header {
 }
 
 .form-control {
-  background-color: ;
   display: flex !important;
   flex-direction: column;
   min-width: 300px;
@@ -36,11 +35,13 @@ header {
 
 input {
   height: 60px;
-  max-width: 300px;
+  max-width: 100%;
 }
 
 select {
   height: 60px;
+  background-color: white;
+  cursor: pointer;
 }
 
 .description-section {
@@ -69,6 +70,7 @@ select {
   border-radius: 50%;
   width: 60px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .buttons {
@@ -87,10 +89,24 @@ button {
   font-weight: bold;
 }
 
+#cancel {
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+#cancel:hover {
+  color: white;
+  background-color: #2c94cc8e;
+}
+
 #createTask {
-  margin-left: 40px;
+  margin-left: 20px;
   border-radius: 10px;
   background-color: var(--main-color);
   color: white;
   padding: 10px 20px;
+}
+
+#createTask:hover {
+  background-color: #2c94cc8e;
 }
