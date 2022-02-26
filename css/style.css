@@ -4,7 +4,7 @@ main color
 
 :root {
     --main-color: #003a5a;
-    --secondary-color: #d8d8d8;
+    --secondary-color: #f1f1f1;
 }
 
 /*
@@ -40,6 +40,7 @@ aside {
     font-size: 80px !important;
     cursor: default;
     margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .aside__menu {
@@ -64,14 +65,27 @@ main {
     border-bottom-right-radius: 5px;
 }
 
-main h2 {
-    line-height: 1;
+.main-body {
+    height: 100%;
 }
 
-@media only screen and (max-width: 510px) {
+.main-body > div {
+    height: 100%;
+}
+
+.mainbody__container {
+    height: 100%;
+}
+
+.mainbody__container * {
+    height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
     .container {
         margin-top: 0;
         padding: 0 !important;
+        max-width: 100% !important;
     }
 
     .appcard {

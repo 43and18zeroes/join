@@ -10,11 +10,12 @@
 
     <link rel="stylesheet" href="./css/main.css">
 
-    <script src="./js/main.js"></script>
+    <script src="./js/mini_backend.js"></script>
     <script src="./js/board.js"></script>
     <script src="./js/backlog.js"></script>
     <script src="./js/addtask.js"></script>
-    <script src="./js/mini_backend.js"></script>
+    <script src="./js/main.js"></script>
+    
     <!--Backend von Junus-->
 
     <!-- bootstrap files -->
@@ -40,7 +41,7 @@
 
             <!-- Sidebar -->
             <aside>
-                <span class="material-icons-outlined aside__logo">join_inner</span>
+                <span class="material-icons-outlined aside__logo" onclick="renderBoard()">join_inner</span>
                 <div class="aside__menu">
                     <h3 onclick="renderBoard()">Board</h3>
                     <h3 onclick="renderBacklog()">Backlog</h3>

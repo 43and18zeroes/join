@@ -1,3 +1,32 @@
-.board__area {
-    background-color: blue;
+.board__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
 }
+
+.board__section h2 {
+    flex: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.board__area {
+    flex: 1;
+    background-color: var(--secondary-color);
+    height: 100%;
+}
+
+.board__space {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .board__row {
+        height: calc(50% - 10px);
+    }
+
+    .board__space {
+        display: block;
+        height: 15px;
+    }
+  }
