@@ -42,6 +42,8 @@ select {
   height: 60px;
   background-color: white;
   cursor: pointer;
+  border: 1px solid gray;
+  border-radius: 3px;
 }
 
 .description-section {
