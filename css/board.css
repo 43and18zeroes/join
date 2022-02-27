@@ -39,6 +39,10 @@
     cursor: pointer;
 }
 
+.drag__area__highlight {
+    background-color: var(--accent-color);
+}
+
 @media only screen and (max-width: 992px) {
     .board__row {
         height: calc(50% - 10px);
