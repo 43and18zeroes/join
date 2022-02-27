@@ -13,8 +13,7 @@ let tickets = [
 
 function renderBoard() {
     document.getElementById("mainbody").innerHTML = renderBoardHTML();
-    includeHTML();
-    renderTickets()
+    renderTickets();
 }
 
 
