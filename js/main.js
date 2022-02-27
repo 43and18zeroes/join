@@ -1,4 +1,5 @@
 function appinit() {
+    renderBoard();
     includeHTML();
 }
 
