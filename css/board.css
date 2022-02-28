@@ -61,6 +61,11 @@
     padding: 8px;
     border-radius: 3px;
     cursor: pointer;
+    transition: color .2s ease-in-out;
+}
+
+.board__button:hover {
+    color: white;
 }
 
 .drag__area__highlight {
@@ -72,8 +77,24 @@
         height: calc(50% - 10px);
     }
 
+    .board__area {
+        margin-bottom: 16px;
+    }
+
     .board__space {
         display: block;
         height: 15px;
     }
-  }
+
+    .board__section h2 {
+        font-size: 24px;
+    }
+
+    .board__space {
+        display: none;
+    }
+
+    .board__card {
+        background-color: white;
+    }
+}

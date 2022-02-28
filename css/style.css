@@ -5,8 +5,8 @@ main color
 :root {
     --main-color: #003a5a;
     --main-accent-color: #006093;
-    --secondary-color: #f1f1f1;
-    --accent-color: #e6e6e6;
+    --secondary-color: #ececec;
+    --accent-color: #dddddd;
 }
 
 /*
@@ -56,11 +56,17 @@ aside {
     color: var(--secondary-color);
 }
 
+
 .aside__logo {
     font-size: 80px !important;
     cursor: default;
     margin-bottom: 25px;
     cursor: pointer;
+    transition: color .2s ease-in-out;
+}
+
+.aside__logo:hover {
+    color: white;
 }
 
 .aside__menu {
@@ -74,6 +80,11 @@ aside {
     cursor: pointer;
     border-left: 5px solid var(--main-color);
     padding-left: 16px;
+    transition: color .2s ease-in-out;
+}
+
+.aside__menu h3:hover {
+    color: white;
 }
 
 main {
