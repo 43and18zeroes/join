@@ -13,6 +13,91 @@ let tickets = [
         'id': 2,
         'title': 'Kochen',
         'status': 'inprogress'
+    },
+    {
+        'id': 3,
+        'title': 'Einkaufen',
+        'status': 'todo'
+    },
+    {
+        'id': 4,
+        'title': 'Putzen',
+        'status': 'todo'
+    },
+    {
+        'id': 5,
+        'title': 'Kochen',
+        'status': 'todo'
+    },
+    {
+        'id': 6,
+        'title': 'Einkaufen',
+        'status': 'todo'
+    },
+    {
+        'id': 7,
+        'title': 'Putzen',
+        'status': 'todo'
+    },
+    {
+        'id': 8,
+        'title': 'Kochen',
+        'status': 'todo'
+    },
+    {
+        'id': 9,
+        'title': 'Kochen',
+        'status': 'todo'
+    },
+    {
+        'id': 10,
+        'title': 'Einkaufen',
+        'status': 'todo'
+    },
+    {
+        'id': 11,
+        'title': 'Putzen',
+        'status': 'todo'
+    },
+    {
+        'id': 12,
+        'title': 'Kochen',
+        'status': 'todo'
+    },
+    {
+        'id': 13,
+        'title': 'Einkaufen',
+        'status': 'todo'
+    },
+    {
+        'id': 14,
+        'title': 'Putzen',
+        'status': 'todo'
+    },
+    {
+        'id': 15,
+        'title': 'Kochen',
+        'status': 'todo'
+    },
+    {
+        'id': 16,
+        'title': 'Einkaufen',
+        'status': 'todo'
+    },
+    {
+        'id': 17,
+        'title': 'Putzen',
+        'status': 'todo'
+    },
+    {
+        'id': 18,
+        'title': 'Kochen',
+        'status': 'todo'
+    },
+    {
+        'id': 19,
+        'title': 'Kochen',
+        'status': 'todo'
     }
 ]
 
@@ -33,9 +118,7 @@ function renderBoardHTML() {
                 <div class="col-12 col-md-6 col-lg-3 board__card">
                     <div class="board__section">
                         <h2>TO DO</h2>
-                        <div class="board__area" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
-
-
+                        <div class="board__area" id="todo" ondrop="moveTo('todo'); removeHighlight('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
                         </div>
                     </div>
                 </div>
@@ -43,8 +126,7 @@ function renderBoardHTML() {
                 <div class="col-12 col-md-6 col-lg-3 board__card">
                     <div class="board__section">
                         <h2>IN PROGRESS</h2>
-                        <div class="board__area" id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
-                            
+                        <div class="board__area" id="inprogress" ondrop="moveTo('inprogress'); removeHighlight('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
                         </div>
                     </div>
                 </div>
@@ -54,8 +136,7 @@ function renderBoardHTML() {
                 <div class="col-12 col-md-6 col-lg-3 board__card">
                     <div class="board__section">
                         <h2>TESTING</h2>
-                        <div class="board__area" id="testing">
-                            
+                        <div class="board__area" id="testing" ondrop="moveTo('testing'); removeHighlight('testing')" ondragleave="removeHighlight('testing')" ondragover="allowDrop(event); highlight('testing')">
                         </div>
                     </div>
                 </div>
@@ -63,8 +144,7 @@ function renderBoardHTML() {
                 <div class="col-12 col-md-6 col-lg-3 board__card">
                     <div class="board__section">
                         <h2>DONE</h2>
-                        <div class="board__area" id="done">
-                        
+                        <div class="board__area" id="done" ondrop="moveTo('done'); removeHighlight('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
                         </div>
                     </div>
                 </div>
@@ -100,11 +180,8 @@ function renderBoardHTML() {
 function updateHTML() {
     updateHTMLTodo();
     updateHTMLInprogress();
-}
-
-
-function startDragging(id) {
-    currentDraggedElement = id;
+    updateHTMLTesting();
+    updateHTMLDone();
 }
 
 
@@ -115,8 +192,8 @@ function generateTodoHTML(element) {
 
 function updateHTMLTodo() {
     let todo = tickets.filter(t => t['status'] == 'todo');
-
     document.getElementById('todo').innerHTML = '';
+
     for (let index = 0; index < todo.length; index++) {
         const element = todo[index];
         document.getElementById('todo').innerHTML += generateTodoHTML(element);
@@ -126,7 +203,6 @@ function updateHTMLTodo() {
 
 function updateHTMLInprogress() {
     let inprogress = tickets.filter(t => t['status'] == 'inprogress');
-
     document.getElementById('inprogress').innerHTML = '';
 
     for (let index = 0; index < inprogress.length; index++) {
@@ -136,8 +212,35 @@ function updateHTMLInprogress() {
 }
 
 
+function updateHTMLTesting() {
+    let testing = tickets.filter(t => t['status'] == 'testing');
+    document.getElementById('testing').innerHTML = '';
+
+    for (let index = 0; index < testing.length; index++) {
+        const element = testing[index];
+        document.getElementById('testing').innerHTML += generateTodoHTML(element);
+    }
+}
+
+
+function updateHTMLDone() {
+    let done = tickets.filter(t => t['status'] == 'done');
+    document.getElementById('done').innerHTML = '';
+
+    for (let index = 0; index < done.length; index++) {
+        const element = done[index];
+        document.getElementById('done').innerHTML += generateTodoHTML(element);
+    }
+}
+
+
 function allowDrop(ev) {
     ev.preventDefault();
+}
+
+
+function startDragging(id) {
+    currentDraggedElement = id;
 }
 
 

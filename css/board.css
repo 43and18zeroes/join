@@ -26,11 +26,16 @@
     gap: 8px;
     padding: 8px;
     border-radius: 3px;
+    transition: all 0.15s ease-in-out;
+}
+
+.drag__area__highlight {
+    background-color: var(--accent-color);
 }
 
 .board__button {
     background-color: var(--main-color);
-    border-color: var(--main-color);
+    border: none;
     width: 100%;
     height: auto;
     color: var(--secondary-color);
