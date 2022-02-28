@@ -117,7 +117,7 @@ function renderBoardHTML() {
 
                 <div class="col-12 col-md-6 col-lg-3 board__card">
                     <div class="board__section">
-                        <h2>TO DO</h2>
+                        <h2 class="noSelect">TO DO</h2>
                         <div class="board__area" id="todo" ondrop="moveTo('todo'); removeHighlight('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
                         </div>
                     </div>
@@ -125,7 +125,7 @@ function renderBoardHTML() {
 
                 <div class="col-12 col-md-6 col-lg-3 board__card">
                     <div class="board__section">
-                        <h2>IN PROGRESS</h2>
+                        <h2 class="noSelect">IN PROGRESS</h2>
                         <div class="board__area" id="inprogress" ondrop="moveTo('inprogress'); removeHighlight('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
                         </div>
                     </div>
@@ -135,7 +135,7 @@ function renderBoardHTML() {
 
                 <div class="col-12 col-md-6 col-lg-3 board__card">
                     <div class="board__section">
-                        <h2>TESTING</h2>
+                        <h2 class="noSelect">TESTING</h2>
                         <div class="board__area" id="testing" ondrop="moveTo('testing'); removeHighlight('testing')" ondragleave="removeHighlight('testing')" ondragover="allowDrop(event); highlight('testing')">
                         </div>
                     </div>
@@ -143,7 +143,7 @@ function renderBoardHTML() {
 
                 <div class="col-12 col-md-6 col-lg-3 board__card">
                     <div class="board__section">
-                        <h2>DONE</h2>
+                        <h2 class="noSelect">DONE</h2>
                         <div class="board__area" id="done" ondrop="moveTo('done'); removeHighlight('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
                         </div>
                     </div>
