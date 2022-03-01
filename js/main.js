@@ -1,32 +1,51 @@
 function appinit() {
-    renderBoard();
-    includeHTML();
+  renderBoard();
+  includeHTML();
 }
 
 function includeHTML() {
-    var z, i, elmnt, file, xhttp;
-    /* Loop through a collection of all HTML elements: */
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-      elmnt = z[i];
-      /*search for elements with a certain atrribute:*/
-      file = elmnt.getAttribute("w3-include-html");
-      if (file) {
-        /* Make an HTTP request using the attribute value as the file name: */
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-            /* Remove the attribute, and call this function once more: */
-            elmnt.removeAttribute("w3-include-html");
-            includeHTML();
-          }
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4) {
+          if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+          if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
         }
-        xhttp.open("GET", file, true);
-        xhttp.send();
-        /* Exit the function: */
-        return;
       }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
     }
   }
+}
+
+
+/**
+ * 
+ * mobile menu eventlistener
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector(".nav");
+
+  document.querySelector("#btnNav").addEventListener("click", () => {
+    nav.classList.add("nav--open");
+  });
+
+  document.querySelector(".nav__overlay").addEventListener("click", () => {
+    nav.classList.remove("nav--open");
+  });
+
+});
