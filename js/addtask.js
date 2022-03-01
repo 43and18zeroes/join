@@ -12,6 +12,8 @@ let profiles = [{
   }
 ]
 
+let allTasks = [];
+
 function renderAddTask() {
   document.getElementById('mainbody').innerHTML = '';
   document.getElementById('mainbody').innerHTML = `
@@ -20,10 +22,10 @@ function renderAddTask() {
     <span class="smallText">Learning Management System Project</span>
   </header>
 
-  <form id="form" class="form">
+  <div id="form" class="form">
     <div class="form-control">
       <label for="title" >Title</label>
-      <input type="text" id="title required" placeholder="Management meeting preparation">
+      <input type="text" id="title" required placeholder="Management meeting preparation">
     </div>
 
     <div class="form-control">
@@ -69,19 +71,25 @@ function renderAddTask() {
         <button onclick="createTask()" id="createTask">Create Task</button>
       </div>
     </div>
-  </form>
+  </div>
  `;
 }
 
-
+/**
+ * This function is used to create a task and put the data into a JSON.
+ */
 function createTask() {
+
   let title = document.getElementById('title');
   let date = document.getElementById('date');
   let category = document.getElementById('category');
   let urgency = document.getElementById('urgency');
   let description = document.getElementById('description');
+  let time = new Date();
+
 
   let task = {
+    'id': time.getTime(),
     'title': title.value,
     'date': date.value,
     'category': category.value,
@@ -89,7 +97,19 @@ function createTask() {
     'description': description.value
   };
 
+  allTasks.push(task);
   console.log(task)
+
+  backend.setItem('allTasks', JSON.stringify(allTasks))
+}
+
+function cancel() {
+  title.value = '';
+  date.value = '';
+  category.value = '';
+  urgency.value = '';
+  description.value = '';
+  asignedto.value = '';
 }
 
 async function init() {

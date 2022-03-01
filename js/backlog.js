@@ -1,12 +1,10 @@
 setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
 
-let allTasks = [];
 
-
-function renderBacklog(){
+function renderBacklog() {
     init();
-    document.getElementById('mainbody').innerHTML = 
-    `
+    document.getElementById('mainbody').innerHTML =
+        `
         <h2>Backlog</h2>
         <br>Wenn ihr das lesen könnt hats geklappt!
     `;
