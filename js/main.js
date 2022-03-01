@@ -37,6 +37,13 @@ function includeHTML() {
  * mobile menu eventlistener
  */
 
+/* removes preload class from body, so transitions can work */
+/* Eventlistener: when page is loaded */
+window.addEventListener("load", () => {
+  document.body.classList.remove("preload");
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".nav");
 
@@ -48,4 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nav.classList.remove("nav--open");
   });
 
+  document.querySelector(".nav__links").addEventListener("click", () => {
+    nav.classList.remove("nav--open");
+  });
 });

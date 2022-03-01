@@ -35,7 +35,7 @@
 
 </head>
 
-<body onload="appinit()">
+<body class="preload" onload="appinit()">
 
     <div class="container">
 
@@ -58,19 +58,19 @@
 
                 <nav class="nav">
                     <div class="nav__links">
-                        <div class="nav__link ">
+                        <div class="nav__link" onclick="renderBoard()">
                             <span class="material-icons-outlined">grid_view</span>
                             Board
                         </div>
-                        <div class="nav__link">
+                        <div class="nav__link" onclick="renderBacklog()">
                             <span class="material-icons-outlined">format_list_bulleted</span>
                             Backlog
                         </div>
-                        <div class="nav__link">
+                        <div class="nav__link" onclick="renderAddTask()">
                             <span class="material-icons-outlined">note_add</span>
                             Add Task
                         </div>
-                        <div class="nav__link">
+                        <div class="nav__link" onclick="renderHelp()">
                             <span class="material-icons-outlined">help_outline</span>
                             Help
                         </div>

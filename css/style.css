@@ -36,6 +36,11 @@ body {
     background-color: #f9f9f8 !important;
 }
 
+/* prevents mobile menu from preloading */
+.preload * {
+    transition: none !important;
+}
+
 .container {
     margin-top: 50px;
 }
