@@ -1,0 +1,15 @@
+#task-field{
+    display:flex;
+}
+
+#task-title{
+    width:20vw;
+}
+
+#task-category{
+    width:15vw;
+}
+
+#task-description{
+ width:auto;
+}
