@@ -2,14 +2,14 @@
     display:flex;
 }
 
-#task-title{
+.task-title{
     width:20vw;
 }
 
-#task-category{
+.task-category{
     width:15vw;
 }
 
-#task-description{
+.task-description{
  width:auto;
 }

@@ -8,13 +8,13 @@ async function renderBacklog() {
         <h2>Backlog</h2>
         
         <div id="task-field">
-            <div id="task-title">
+            <div class="task-title">
                 Titel: ${allTasks[0]['title']}
             </div>
-            <div id="task-category">
+            <div class="task-category">
                 Kategorie: ${allTasks[0]['category']}
                 </div>
-            <div id="task-description">
+            <div class="task-description">
                 Beschreibung: ${allTasks[0]['description']}
             </div>
         </div>
