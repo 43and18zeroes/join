@@ -30,7 +30,6 @@ function createTask() {
   let category = document.getElementById('category');
   let urgency = document.getElementById('urgency');
   let description = document.getElementById('description');
-  let assignedto = document.getElementById('assigendto');
 
   let task = {
     'id': time.toLocaleTimeString(),
