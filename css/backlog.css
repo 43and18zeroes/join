@@ -1,5 +1,6 @@
 #task-field{
     display:flex;
+    height:auto;
 }
 
 .task-title{
