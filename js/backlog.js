@@ -9,16 +9,17 @@ async function renderBacklog() {
         
         <div id="task-field">
             <div class="task-title">
-                Titel: ${allTasks[0]['title']}
+                <p>Titel</p>
             </div>
             <div class="task-category">
-                Kategorie: ${allTasks[0]['category']}
+                <p>Kategorie</p>
                 </div>
             <div class="task-description">
-                Beschreibung: ${allTasks[0]['description']}
+                <p>Beschreibung<p>
             </div>
         </div>
         `;
+    generateFrontend();
 }
 
 async function init() {
@@ -28,6 +29,24 @@ async function init() {
 
 
 function generateFrontend(){
+    for (let i = 0; i < allTasks.length; i++) {
+        const element = allTasks[i];
+        
+        document.getElementById('mainbody').innerHTML +=
+        `
+        <div id="task-field">
+            <div class="task-title">
+                <p>${element['title']}</p>
+            </div>
+            <div class="task-category">
+                <p>${element['category']}</p>
+                </div>
+            <div class="task-description">
+                <p>${element['description']}<p>
+            </div>
+        </div>
 
+        `;
+    }
 
 }
