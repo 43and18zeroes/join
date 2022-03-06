@@ -8,14 +8,14 @@ async function renderBacklog() {
         <h2>Backlog</h2>
         
         <div id="task-field">
-            <div class="task-title">
-                <p>Titel</p>
+            <div class="task-title col-4">
+                <p><b>Titel</b></p>
             </div>
-            <div class="task-category">
-                <p>Kategorie</p>
+            <div class="task-category col-2">
+                <p><b>Kategorie</b></p>
                 </div>
-            <div class="task-description">
-                <p>Beschreibung<p>
+            <div class="task-description col-5">
+                <p><b>Beschreibung</b><p>
             </div>
         </div>
         `;
@@ -35,18 +35,24 @@ function generateFrontend(){
         document.getElementById('mainbody').innerHTML +=
         `
         <div id="task-field">
-            <div class="task-title">
+            <div class="task-title col-4">
                 <p>${element['title']}</p>
             </div>
-            <div class="task-category">
+            <div class="task-category col-2">
                 <p>${element['category']}</p>
                 </div>
-            <div class="task-description">
+            <div class="task-description col-5">
                 <p>${element['description']}<p>
+            </div>
+            <div class="col-1">
+                <img src="../img/pencil.ico" onclick="editBacklog(${i})">
             </div>
         </div>
 
         `;
     }
+}
+
+function editBacklog(i){
 
 }
