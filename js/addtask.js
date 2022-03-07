@@ -32,7 +32,7 @@ function createTask() {
   let description = document.getElementById('description');
 
   let task = {
-    'id': time.toLocaleTimeString(),
+    'id': time.getTime(),
     'title': title.value,
     'date': date.value,
     'category': category.value,
@@ -67,6 +67,7 @@ async function init() {
   await downloadFromServer();
   allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }
+
 /**
  * @returns all the rendered HTML elements
  */
