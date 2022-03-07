@@ -1,6 +1,6 @@
 setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
 
-
+//rendering the basic table titles first, then get actual content with generateFrontend function
 async function renderBacklog() {
     await init();
     document.getElementById('mainbody').innerHTML =
@@ -22,12 +22,13 @@ async function renderBacklog() {
     generateFrontend();
 }
 
+//downloading the allTasks JSON from backend
 async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }
 
-
+//print the given attributes of allTasks JSON
 function generateFrontend(){
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
@@ -45,7 +46,7 @@ function generateFrontend(){
                 <p>${element['description']}<p>
             </div>
             <div class="col-1">
-                <img src="../img/pencil.ico" onclick="editBacklog(${i})">
+                <img class="pencil-icon" src="../img/pencil.ico" onclick="editBacklog(${i})">
             </div>
         </div>
 

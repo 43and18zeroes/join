@@ -2,21 +2,25 @@
     display:flex;
     height:auto;
 }
-/*
+
+.pencil-icon:hover{
+    opacity:0.6;
+}
+
 .task-title{
     display:flex;
     justify-content:center;
-    width:20vw;
+    
 }
 
 .task-category{
     display:flex;
     justify-content:center;
-    width:15vw;
+    
 }
 
 .task-description{
     display:flex;
     justify-content:center;
-    width:25vw;
+    
 }
