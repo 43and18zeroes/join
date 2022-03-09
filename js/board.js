@@ -1,6 +1,9 @@
 setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
 
-let tickets = [];
+
+let tickets = [];           // empty array for the JSON data from backend
+let currentDraggedElement;  // global var for the drag n drop feature
+
 
 async function getBackend() {
     await downloadFromServer();
@@ -16,112 +19,6 @@ function addIDtoJSON() {
         tickets[index]['id'] = index;
     }
 }
-
-
-// let tickets = [
-//     {
-//         'id': 0,
-//         'title': 'Einkaufen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 1,
-//         'title': 'Putzen',
-//         'status': 'inprogress'
-//     },
-//     {
-//         'id': 2,
-//         'title': 'Kochen',
-//         'status': 'inprogress'
-//     },
-//     {
-//         'id': 3,
-//         'title': 'Einkaufen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 4,
-//         'title': 'Putzen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 5,
-//         'title': 'Kochen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 6,
-//         'title': 'Einkaufen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 7,
-//         'title': 'Putzen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 8,
-//         'title': 'Kochen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 9,
-//         'title': 'Kochen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 10,
-//         'title': 'Einkaufen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 11,
-//         'title': 'Putzen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 12,
-//         'title': 'Kochen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 13,
-//         'title': 'Einkaufen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 14,
-//         'title': 'Putzen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 15,
-//         'title': 'Kochen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 16,
-//         'title': 'Einkaufen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 17,
-//         'title': 'Putzen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 18,
-//         'title': 'Kochen',
-//         'status': 'todo'
-//     },
-//     {
-//         'id': 19,
-//         'title': 'Kochen',
-//         'status': 'todo'
-//     }
-// ]
-
-let currentDraggedElement;
 
 
 async function renderBoard() {
@@ -176,28 +73,7 @@ function renderBoardHTML() {
     `;
 }
 
-
-// function renderTickets() {
-//     for (let index = 0; index < tickets.length; index++) {
-//         const ticket = tickets[index];
-//         renderTicket(ticket);
-//     }
-// }
-
-// /**
-//  * This function renders a single ticket into the board
-//  * 
-//  * @param {JSON} ticket - JSON with data of a single ticket
-//  */
-// function renderTicket(ticket) {
-//     document.getElementById(ticket.status).innerHTML += `
-//         <div draggable="true" class="board__button" id="${ticket.id}">${ticket.title}</div>
-//     `;
-// }
-
-
-/* Drag and Drop Video */
-
+/* Drag n Drop */
 
 function updateHTML() {
     updateHTMLTodo();
