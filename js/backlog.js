@@ -55,5 +55,21 @@ function generateFrontend(){
 }
 
 function editBacklog(i){
-    
+   generatePopup(i);
+}
+
+//Closes the Popup Window
+function closePopup(){
+    document.getElementById('pop-up-window').classList.add('dont-show');
+}
+
+//Opens the Popup Window
+function generatePopup(i){
+    document.getElementById('pop-up-window').innerHTML=``;
+    document.getElementById('pop-up-window').classList.remove('dont-show');
+    document.getElementById('pop-up-window').innerHTML += 
+    `
+    <div id="pop-up-content"></div>
+    <img id="closebutton" src="img/xclose.ico" onclick="closePopup()">
+    `
 }

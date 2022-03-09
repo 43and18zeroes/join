@@ -37,7 +37,7 @@ body {
 }
 
 /*
-pop-up in index.html with the dont-show class
+pop-up in index.html with all associated classes and IDs
 */
 .pop-up{
     z-index:777;
@@ -52,8 +52,25 @@ pop-up in index.html with the dont-show class
     align-items:center;
 }
 
+/*class to hide*/
 .dont-show{
     display:none;
+}
+
+/*Div to display the chosen content in the Popup*/
+#pop-up-content{
+    height:600px;
+    width:600px;
+    background-color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#closebutton{
+    position:absolute;
+    top:50px;
+    right:50px;
 }
 
 
