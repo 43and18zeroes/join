@@ -3,22 +3,7 @@ setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
 //rendering the basic table titles first, then get actual content with generateFrontend function
 async function renderBacklog() {
     await init();
-    document.getElementById('mainbody').innerHTML =
-        `
-        <h2>Backlog</h2>
-        
-        <div id="task-field">
-            <div class="task-title col-4">
-                <p><b>Titel</b></p>
-            </div>
-            <div class="task-category col-2">
-                <p><b>Kategorie</b></p>
-                </div>
-            <div class="task-description col-5">
-                <p><b>Beschreibung</b><p>
-            </div>
-        </div>
-        `;
+    generateHeader();
     generateFrontend();
 }
 
@@ -31,6 +16,7 @@ async function init() {
 //print the given attributes of allTasks JSON
 function generateFrontend(){
     document.getElementById('mainbody').innerHTML = ``;
+    generateHeader();
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
         
@@ -56,8 +42,8 @@ function generateFrontend(){
 }
 
 function editBacklog(i){
-   //generatePopup(i);
-   allTasks[i]['title'] = 'testing';
+   generatePopup(i);
+   allTasks[i]['title'] = 'hi christoph';
    backend.setItem('allTasks', JSON.stringify(allTasks))
    generateFrontend();
 }
@@ -76,4 +62,23 @@ function generatePopup(i){
     <div id="pop-up-content"></div>
     <img id="closebutton" src="img/xclose.ico" onclick="closePopup()">
     `
+}
+
+function generateHeader(){
+    document.getElementById('mainbody').innerHTML =
+        `
+        <h2>Backlog</h2>
+        
+        <div id="task-field">
+            <div class="task-title col-4">
+                <p><b>Titel</b></p>
+            </div>
+            <div class="task-category col-2">
+                <p><b>Kategorie</b></p>
+                </div>
+            <div class="task-description col-5">
+                <p><b>Beschreibung</b><p>
+            </div>
+        </div>
+        `;
 }
