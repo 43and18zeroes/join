@@ -1,110 +1,132 @@
-let tickets = [
-    {
-        'id': 0,
-        'title': 'Einkaufen',
-        'status': 'todo'
-    },
-    {
-        'id': 1,
-        'title': 'Putzen',
-        'status': 'inprogress'
-    },
-    {
-        'id': 2,
-        'title': 'Kochen',
-        'status': 'inprogress'
-    },
-    {
-        'id': 3,
-        'title': 'Einkaufen',
-        'status': 'todo'
-    },
-    {
-        'id': 4,
-        'title': 'Putzen',
-        'status': 'todo'
-    },
-    {
-        'id': 5,
-        'title': 'Kochen',
-        'status': 'todo'
-    },
-    {
-        'id': 6,
-        'title': 'Einkaufen',
-        'status': 'todo'
-    },
-    {
-        'id': 7,
-        'title': 'Putzen',
-        'status': 'todo'
-    },
-    {
-        'id': 8,
-        'title': 'Kochen',
-        'status': 'todo'
-    },
-    {
-        'id': 9,
-        'title': 'Kochen',
-        'status': 'todo'
-    },
-    {
-        'id': 10,
-        'title': 'Einkaufen',
-        'status': 'todo'
-    },
-    {
-        'id': 11,
-        'title': 'Putzen',
-        'status': 'todo'
-    },
-    {
-        'id': 12,
-        'title': 'Kochen',
-        'status': 'todo'
-    },
-    {
-        'id': 13,
-        'title': 'Einkaufen',
-        'status': 'todo'
-    },
-    {
-        'id': 14,
-        'title': 'Putzen',
-        'status': 'todo'
-    },
-    {
-        'id': 15,
-        'title': 'Kochen',
-        'status': 'todo'
-    },
-    {
-        'id': 16,
-        'title': 'Einkaufen',
-        'status': 'todo'
-    },
-    {
-        'id': 17,
-        'title': 'Putzen',
-        'status': 'todo'
-    },
-    {
-        'id': 18,
-        'title': 'Kochen',
-        'status': 'todo'
-    },
-    {
-        'id': 19,
-        'title': 'Kochen',
-        'status': 'todo'
+setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
+
+let tickets = [];
+
+async function getBackend() {
+    await downloadFromServer();
+    tickets = JSON.parse(backend.getItem('allTasks')) || [];
+}
+
+
+/**
+ * Adds an id to each JSON element in order for drag n drop to work
+ */
+function addIDtoJSON() {
+    for (let index = 0; index < tickets.length; index++) {
+        tickets[index]['id'] = index;
     }
-]
+}
+
+
+// let tickets = [
+//     {
+//         'id': 0,
+//         'title': 'Einkaufen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 1,
+//         'title': 'Putzen',
+//         'status': 'inprogress'
+//     },
+//     {
+//         'id': 2,
+//         'title': 'Kochen',
+//         'status': 'inprogress'
+//     },
+//     {
+//         'id': 3,
+//         'title': 'Einkaufen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 4,
+//         'title': 'Putzen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 5,
+//         'title': 'Kochen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 6,
+//         'title': 'Einkaufen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 7,
+//         'title': 'Putzen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 8,
+//         'title': 'Kochen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 9,
+//         'title': 'Kochen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 10,
+//         'title': 'Einkaufen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 11,
+//         'title': 'Putzen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 12,
+//         'title': 'Kochen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 13,
+//         'title': 'Einkaufen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 14,
+//         'title': 'Putzen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 15,
+//         'title': 'Kochen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 16,
+//         'title': 'Einkaufen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 17,
+//         'title': 'Putzen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 18,
+//         'title': 'Kochen',
+//         'status': 'todo'
+//     },
+//     {
+//         'id': 19,
+//         'title': 'Kochen',
+//         'status': 'todo'
+//     }
+// ]
 
 let currentDraggedElement;
 
 
-function renderBoard() {
+async function renderBoard() {
+    await getBackend();
+    addIDtoJSON();
     document.getElementById("mainbody").innerHTML = renderBoardHTML();
     updateHTML();
 }
