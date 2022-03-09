@@ -30,6 +30,7 @@ async function init() {
 
 //print the given attributes of allTasks JSON
 function generateFrontend(){
+    document.getElementById('mainbody').innerHTML = ``;
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
         
@@ -55,7 +56,10 @@ function generateFrontend(){
 }
 
 function editBacklog(i){
-   generatePopup(i);
+   //generatePopup(i);
+   allTasks[i]['title'] = 'testing';
+   backend.setItem('allTasks', JSON.stringify(allTasks))
+   generateFrontend();
 }
 
 //Closes the Popup Window
