@@ -44,14 +44,22 @@ function generateFrontend(){
 //onclick function to start the chain
 function editBacklog(i){
    generatePopup(i);
-   allTasks[i]['title'] = 'hi christoph';
-   backend.setItem('allTasks', JSON.stringify(allTasks))
    generateFrontend();
 }
 
 //Closes the Popup Window
 function closePopup(){
     document.getElementById('pop-up-window').classList.add('dont-show');
+}
+
+async function saveNewTask(i){
+    allTasks[i]['title'] = document.getElementById('title-input').value;
+    allTasks[i]['category'] = document.getElementById('category-input').value;
+    allTasks[i]['description'] = document.getElementById('description-input').value;
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    closePopup();
+    generateHeader();
+    generateFrontend();
 }
 
 //Opens the Popup Window
@@ -66,8 +74,14 @@ function generatePopup(i){
             <p><b>Kategorie des Tasks:</b> ${allTasks[i]['category']}</p>
             <p><b>Beschreibung des Tasks:</b> ${allTasks[i]['description']}</p>
         </div>
+        <div id="pop-up-submit">
+            <input id="title-input" placeholder="Neuen Titel eingeben..">
+            <input id="category-input" placeholder="Neue Kategorie eingeben..">
+            <input id="description-input" placeholder="Neue Beschreibung eingeben..">
+            <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
+        </div>
     </div>
-    <img id="closebutton" src="img/xclose.ico" onclick="closePopup()">
+    <img id="closebutton" src="img/xclose.ico" onclick="closePopup(${i})">
     `
 }
 

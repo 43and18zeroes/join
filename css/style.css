@@ -77,6 +77,23 @@ pop-up in index.html with all associated classes and IDs
     margin-top:16px;
 }
 
+#pop-up-submit{
+    display:flex;
+    flex-direction:column;
+    margin-left:16px;
+    margin-top:16px;
+    margin-right:16px;
+    gap:8px;
+}
+
+#save-task-button{
+    border:1px solid var(--secondary-color);
+}
+
+#save-task-button:hover{
+    background-color: var(--secondary-color);
+}
+
 
 /* prevents mobile menu from preloading */
 .preload * {
