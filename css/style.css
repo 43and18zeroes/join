@@ -63,14 +63,18 @@ pop-up in index.html with all associated classes and IDs
     width:600px;
     background-color:white;
     display:flex;
-    justify-content:center;
-    align-items:center;
+    flex-direction:column;
 }
 
 #closebutton{
     position:absolute;
     top:50px;
     right:50px;
+}
+
+#pop-up-display{
+    margin-left:16px;
+    margin-top:16px;
 }
 
 

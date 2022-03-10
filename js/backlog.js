@@ -41,6 +41,7 @@ function generateFrontend(){
     }
 }
 
+//onclick function to start the chain
 function editBacklog(i){
    generatePopup(i);
    allTasks[i]['title'] = 'hi christoph';
@@ -59,11 +60,18 @@ function generatePopup(i){
     document.getElementById('pop-up-window').classList.remove('dont-show');
     document.getElementById('pop-up-window').innerHTML += 
     `
-    <div id="pop-up-content"></div>
+    <div id="pop-up-content">
+        <div id="pop-up-display">
+            <p><b>Titel des Tasks:</b> ${allTasks[i]['title']}</p>
+            <p><b>Kategorie des Tasks:</b> ${allTasks[i]['category']}</p>
+            <p><b>Beschreibung des Tasks:</b> ${allTasks[i]['description']}</p>
+        </div>
+    </div>
     <img id="closebutton" src="img/xclose.ico" onclick="closePopup()">
     `
 }
 
+//Generates titles of backlog page
 function generateHeader(){
     document.getElementById('mainbody').innerHTML =
         `
