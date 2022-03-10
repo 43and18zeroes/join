@@ -19,7 +19,6 @@ function generateFrontend(){
     generateHeader();
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
-        
         document.getElementById('mainbody').innerHTML +=
         `
         <div id="task-field">
@@ -52,6 +51,7 @@ function closePopup(){
     document.getElementById('pop-up-window').classList.add('dont-show');
 }
 
+//Saves the new Task in the backend, with values given by the input fields
 async function saveNewTask(i){
     allTasks[i]['title'] = document.getElementById('title-input').value;
     allTasks[i]['category'] = document.getElementById('category-input').value;
@@ -75,9 +75,9 @@ function generatePopup(i){
             <p><b>Beschreibung des Tasks:</b> ${allTasks[i]['description']}</p>
         </div>
         <div id="pop-up-submit">
-            <input id="title-input" placeholder="Neuen Titel eingeben..">
-            <input id="category-input" placeholder="Neue Kategorie eingeben..">
-            <input id="description-input" placeholder="Neue Beschreibung eingeben..">
+            <input type="text" id="title-input" placeholder="Neuen Titel eingeben..">
+            <input type="text" id="category-input" placeholder="Neue Kategorie eingeben..">
+            <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
             <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
         </div>
     </div>
