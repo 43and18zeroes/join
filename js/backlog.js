@@ -62,6 +62,14 @@ async function saveNewTask(i){
     generateFrontend();
 }
 
+async function deleteTask(i){
+    allTasks.splice(i,1);
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    closePopup();
+    generateHeader();
+    generateFrontend();
+}
+
 //Opens the Popup Window
 function generatePopup(i){
     document.getElementById('pop-up-window').innerHTML=``;
@@ -79,6 +87,7 @@ function generatePopup(i){
             <input type="text" id="category-input" placeholder="Neue Kategorie eingeben..">
             <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
             <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
+            <button id="delete-task-button" onclick="deleteTask(${i})">Task Löschen!</button>
         </div>
     </div>
     <img id="closebutton" src="img/xclose.ico" onclick="closePopup(${i})">

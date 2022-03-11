@@ -94,6 +94,14 @@ pop-up in index.html with all associated classes and IDs
     background-color: var(--secondary-color);
 }
 
+#delete-task-button{
+    border:1px solid var(--secondary-color);
+}
+
+#delete-task-button:hover{
+    background-color: var(--secondary-color);
+}
+
 
 /* prevents mobile menu from preloading */
 .preload * {
