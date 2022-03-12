@@ -14,6 +14,7 @@ header {
   background-color: var(--secondary-color);
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   overflow: scroll;
 }
 
@@ -23,7 +24,6 @@ header {
   width: 45% !important;
   height: 100px;
   margin: 10px;
-  overflow: scroll;
 }
 
 .form-control label {
@@ -125,8 +125,6 @@ button {
   }
 
   .form-control {
-    margin-left: 30px;
     width: 90% !important;
-    overflow-y: scroll;
   }
 }
