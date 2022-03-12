@@ -41,9 +41,8 @@ function createTask() {
   };
 
   allTasks.push(task);
-  console.log(task)
-
   backend.setItem('allTasks', JSON.stringify(allTasks))
+  backend.setItem('profiles', JSON.stringify(profiles))
 
   clearForm();
 }
@@ -67,6 +66,7 @@ function chooseAssignedTo() {
       <option>${profiles[i]['name']}, ${profiles[i]['email']}</option>
   `;
   }
+
 }
 
 async function init() {
