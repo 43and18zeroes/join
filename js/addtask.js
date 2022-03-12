@@ -1,15 +1,15 @@
 setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
 
 let profiles = [{
-    'name': 'Addy W',
+    'name': 'Addy W.',
     'email': 'soundso@email.com'
   },
   {
-    'name': 'Alexander k',
+    'name': 'Alexander K.',
     'email': 'soundso@email.com'
   },
   {
-    'name': 'Christoph W',
+    'name': 'Christoph W.',
     'email': 'soundso@email.com'
   }
 ]
@@ -28,7 +28,7 @@ function createTask() {
   let title = document.getElementById('title');
   let date = document.getElementById('date');
   let category = document.getElementById('category');
-  let urgency = document.getElementById('urgency');
+  let status = document.getElementById('status');
   let description = document.getElementById('description');
 
   let task = {
@@ -36,7 +36,7 @@ function createTask() {
     'title': title.value,
     'date': date.value,
     'category': category.value,
-    'urgency': urgency.value,
+    'status': status.value,
     'description': description.value,
   };
 
@@ -54,13 +54,19 @@ function clearForm() {
   title.value = '';
   date.value = '';
   category.value = '';
-  urgency.value = '';
+  status.value = '';
   description.value = '';
 }
 
 function chooseAssignedTo() {
-  let profile = document.getElementById('profile');
-  let profiles = document.getElementById('profiles');
+  document.getElementById('selectId').classList.remove('d-none');
+
+  document.getElementById('selectId').innerHTML = ''
+  for (let i = 0; i < profiles.length; i++) {
+    document.getElementById('selectId').innerHTML += `
+      <option>${profiles[i]['name']}, ${profiles[i]['email']}</option>
+  `;
+  }
 }
 
 async function init() {
@@ -102,12 +108,11 @@ function renderHTML() {
     </div>
 
     <div class="form-control ">
-      <label for="urgency">Urgency</label>
-      <select type="text" id="urgency">
-        <option>Top Priority</option>
-        <option>Important!</option>
-        <option>Info</option>
-        <option>For Later</option>
+      <label for="status">Status</label>
+      <select type="text" id="status">
+        <option>Todo</option>
+        <option>In Progress</option>
+        <option>Testing</option>
       </select>
     </div>
 
@@ -119,8 +124,8 @@ function renderHTML() {
     <div class="form-control description-section">
       <label for="profile">Assigned To</label>
       <div id="profiles" class="profiles">
-        <img  class="profile-img" src="../img/imgAddy.jpg">
         <img onclick="chooseAssignedTo()" id="profile" class="profile-img icon" src="../img/icons8-plus.png">
+        <select class="d-none" id="selectId"></select>
       </div>
       <div class="buttons">
         <button onclick="clearForm()" id="cancel">Cancel</button>
