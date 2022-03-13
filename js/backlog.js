@@ -11,6 +11,7 @@ async function renderBacklog() {
 async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+    allTasks = JSON.parse(backend.getItem('profiles')) || [];
 }
 
 //print the given attributes of allTasks JSON
@@ -23,7 +24,7 @@ function generateFrontend(){
         `
         <div id="task-field">
             <div class="task-title col-4">
-                <p>${element['title']}</p>
+                <p>${profiles[i]['name']} ${profiles[i]['email']}</p>
             </div>
             <div class="task-category col-2">
                 <p>${element['category']}</p>
@@ -53,7 +54,8 @@ function closePopup(){
 
 //Saves the new Task in the backend, with values given by the input fields
 async function saveNewTask(i){
-    allTasks[i]['title'] = document.getElementById('title-input').value;
+    profiles[i]['name'] = document.getElementById('name-input').value;
+    profiles[i]['email'] = document.getElementById('email-input').value;
     allTasks[i]['category'] = document.getElementById('category-input').value;
     allTasks[i]['description'] = document.getElementById('description-input').value;
     await backend.setItem('allTasks', JSON.stringify(allTasks));
@@ -78,12 +80,13 @@ function generatePopup(i){
     `
     <div id="pop-up-content">
         <div id="pop-up-display">
-            <p><b>Titel des Tasks:</b> ${allTasks[i]['title']}</p>
-            <p><b>Kategorie des Tasks:</b> ${allTasks[i]['category']}</p>
-            <p><b>Beschreibung des Tasks:</b> ${allTasks[i]['description']}</p>
+            <p><b>Currently assigned to:</b> ${profiles[i]['name']} ${profiles[i]['email']}</p>
+            <p><b>Current category:</b> ${allTasks[i]['category']}</p>
+            <p><b>Current details:</b> ${allTasks[i]['description']}</p>
         </div>
         <div id="pop-up-submit">
-            <input type="text" id="title-input" placeholder="Neuen Titel eingeben..">
+            <input type="text" id="name-input" placeholder="Neuen Namen eingeben..">
+            <input type="text" id="email-input" placeholder="Neue E-Mail eingeben..">
             <input type="text" id="category-input" placeholder="Neue Kategorie eingeben..">
             <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
             <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
@@ -102,13 +105,13 @@ function generateHeader(){
         
         <div id="task-field">
             <div class="task-title col-4">
-                <p><b>Titel</b></p>
+                <p><b>Assigned to</b></p>
             </div>
             <div class="task-category col-2">
-                <p><b>Kategorie</b></p>
+                <p><b>Category</b></p>
                 </div>
             <div class="task-description col-5">
-                <p><b>Beschreibung</b><p>
+                <p><b>Details</b><p>
             </div>
         </div>
         `;
