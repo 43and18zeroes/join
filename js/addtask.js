@@ -110,9 +110,9 @@ function renderHTML() {
     <div class="form-control ">
       <label for="status">Status</label>
       <select type="text" id="status">
-        <option>Todo</option>
-        <option>In Progress</option>
-        <option>Testing</option>
+        <option value="todo">Todo</option>
+        <option value="inprogress">In Progress</option>
+        <option value="testing">Testing</option>
       </select>
     </div>
 
