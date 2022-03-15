@@ -142,9 +142,10 @@ function startDragging(id) {
 }
 
 
-function moveTo(status) {
+async function moveTo(status) {
     tickets[currentDraggedElement]['status'] = status; // i.E. ticket with id 1: the category array changes to 'todo' or 'inprogress'
     updateHTML();
+    await backend.setItem('allTasks', JSON.stringify(tickets)); // saves the array after a drop
 }
 
 
