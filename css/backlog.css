@@ -3,6 +3,36 @@
     height:auto;
 }
 
+.card-design{
+    margin-bottom:2vh;
+    padding-top:1vh;
+    background-color: var(--secondary-color);
+}
+
+.card-design-left{
+    border-top-left-radius:12px;
+    border-bottom-left-radius:12px;
+    margin-bottom:2vh;
+    padding-top:1vh;
+    background-color: var(--secondary-color);
+}
+
+.card-design-right{
+    border-top-right-radius:12px;
+    border-bottom-right-radius:12px;
+    margin-bottom:2vh;
+    padding-top:1vh;
+    background-color: var(--secondary-color);
+}
+
+
+.pencil-design{
+    margin-bottom:2vh;
+    margin-left:1vw;
+    display:flex;
+    align-items:center;
+}
+
 .pencil-icon:hover{
     opacity:0.6;
 }

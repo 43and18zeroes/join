@@ -23,16 +23,16 @@ function generateFrontend(){
         document.getElementById('mainbody').innerHTML +=
         `
         <div id="task-field">
-            <div class="task-title col-4">
+            <div class="task-title col-4 card-design-left">
                 <p>${profiles[i]['name']} ${profiles[i]['email']}</p>
             </div>
-            <div class="task-category col-2">
+            <div class="task-category col-2 card-design">
                 <p>${element['category']}</p>
                 </div>
-            <div class="task-description col-5">
+            <div class="task-description col-5 card-design-right">
                 <p>${element['description']}<p>
             </div>
-            <div class="col-1">
+            <div class="col-1 pencil-design">
                 <img class="pencil-icon" src="../img/pencil.ico" onclick="editBacklog(${i})">
             </div>
         </div>
