@@ -59,6 +59,7 @@ async function saveNewTask(i){
     allTasks[i]['category'] = document.getElementById('category-input').value;
     allTasks[i]['description'] = document.getElementById('description-input').value;
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('profiles', JSON.stringify(profiles));
     closePopup();
     generateHeader();
     generateFrontend();
