@@ -11,7 +11,7 @@ async function renderBacklog() {
 async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    allTasks = JSON.parse(backend.getItem('profiles')) || [];
+    profiles = JSON.parse(backend.getItem('profiles')) || [];
 }
 
 //print the given attributes of allTasks JSON
