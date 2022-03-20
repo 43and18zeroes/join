@@ -11,7 +11,6 @@ async function renderBacklog() {
 async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    profiles = JSON.parse(backend.getItem('profiles')) || [];
 }
 
 //print the given attributes of allTasks JSON
@@ -20,11 +19,12 @@ function generateFrontend() {
     generateHeader();
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
+        const profileID = element['user']-1;
         document.getElementById('mainbody').innerHTML +=
-            `
+        `
         <div id="task-field">
             <div class="task-title col-4 card-design-left">
-                <p>${profiles[i]['name']} ${profiles[i]['email']}</p>
+                <p>${profiles[profileID]['name']} ${profiles[profileID]['email']}</p>
             </div>
             <div class="task-category col-2 card-design">
                 <p>${element['category']}</p>
@@ -36,7 +36,6 @@ function generateFrontend() {
                 <img class="pencil-icon" src="../img/pencil.ico" onclick="editBacklog(${i})">
             </div>
         </div>
-
         `;
     }
 }
@@ -54,8 +53,8 @@ function closePopup() {
 
 //Saves the new Task in the backend, with values given by the input fields
 async function saveNewTask(i) {
-    profiles[i]['name'] = document.getElementById('name-input').value;
-    profiles[i]['email'] = document.getElementById('email-input').value;
+    //profiles[i]['name'] = document.getElementById('name-input').value;
+    //profiles[i]['email'] = document.getElementById('email-input').value;
     allTasks[i]['category'] = document.getElementById('category-input').value;
     allTasks[i]['description'] = document.getElementById('description-input').value;
     await backend.setItem('allTasks', JSON.stringify(allTasks));
