@@ -11,17 +11,17 @@ async function renderBacklog() {
 async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    allTasks = JSON.parse(backend.getItem('profiles')) || [];
+    profiles = JSON.parse(backend.getItem('profiles')) || [];
 }
 
 //print the given attributes of allTasks JSON
-function generateFrontend(){
+function generateFrontend() {
     document.getElementById('mainbody').innerHTML = ``;
     generateHeader();
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
         document.getElementById('mainbody').innerHTML +=
-        `
+            `
         <div id="task-field">
             <div class="task-title col-4 card-design-left">
                 <p>${profiles[i]['name']} ${profiles[i]['email']}</p>
@@ -42,18 +42,18 @@ function generateFrontend(){
 }
 
 //onclick function to start the chain
-function editBacklog(i){
-   generatePopup(i);
-   generateFrontend();
+function editBacklog(i) {
+    generatePopup(i);
+    generateFrontend();
 }
 
 //Closes the Popup Window
-function closePopup(){
+function closePopup() {
     document.getElementById('pop-up-window').classList.add('dont-show');
 }
 
 //Saves the new Task in the backend, with values given by the input fields
-async function saveNewTask(i){
+async function saveNewTask(i) {
     profiles[i]['name'] = document.getElementById('name-input').value;
     profiles[i]['email'] = document.getElementById('email-input').value;
     allTasks[i]['category'] = document.getElementById('category-input').value;
@@ -64,8 +64,8 @@ async function saveNewTask(i){
     generateFrontend();
 }
 
-async function deleteTask(i){
-    allTasks.splice(i,1);
+async function deleteTask(i) {
+    allTasks.splice(i, 1);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     closePopup();
     generateHeader();
@@ -73,11 +73,11 @@ async function deleteTask(i){
 }
 
 //Opens the Popup Window
-function generatePopup(i){
-    document.getElementById('pop-up-window').innerHTML=``;
+function generatePopup(i) {
+    document.getElementById('pop-up-window').innerHTML = ``;
     document.getElementById('pop-up-window').classList.remove('dont-show');
-    document.getElementById('pop-up-window').innerHTML += 
-    `
+    document.getElementById('pop-up-window').innerHTML +=
+        `
     <div id="pop-up-content">
         <div id="pop-up-display">
             <p><b>Currently assigned to:</b> ${profiles[i]['name']} ${profiles[i]['email']}</p>
@@ -98,7 +98,7 @@ function generatePopup(i){
 }
 
 //Generates titles of backlog page
-function generateHeader(){
+function generateHeader() {
     document.getElementById('mainbody').innerHTML =
         `
         <h2>Backlog</h2>

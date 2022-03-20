@@ -2,15 +2,18 @@ setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
 
 let profiles = [{
     'name': 'Addy W.',
-    'email': 'soundso@email.com'
+    'email': 'soundso@email.com',
+    'id': 1,
   },
   {
     'name': 'Alexander K.',
-    'email': 'soundso@email.com'
+    'email': 'soundso@email.com',
+    'id': 2,
   },
   {
     'name': 'Christoph W.',
-    'email': 'soundso@email.com'
+    'email': 'soundso@email.com',
+    'id': 3
   }
 ]
 
@@ -30,6 +33,7 @@ function createTask() {
   let category = document.getElementById('category');
   let status = document.getElementById('status');
   let description = document.getElementById('description');
+  let user = document.getElementById('selectId');
 
   let task = {
     'id': time.getTime(),
@@ -38,18 +42,21 @@ function createTask() {
     'category': category.value,
     'status': status.value,
     'description': description.value,
+    'user': user.value,
   };
 
   allTasks.push(task);
   backend.setItem('allTasks', JSON.stringify(allTasks))
-  backend.setItem('profiles', JSON.stringify(profiles))
-
+  // backend.setItem('profiles', JSON.stringify(profiles))
+  console.log('ist drin')
   clearForm();
 }
 /**
  * this function clears the Form
  */
 function clearForm() {
+  document.getElementById('selectId').classList.add('d-none');
+
   title.value = '';
   date.value = '';
   category.value = '';
@@ -118,7 +125,7 @@ function renderHTML() {
 
     <div class="form-control description-section">
       <label for="description">Description</label>
-      <textarea id="description"  placeholder="Type in your description..."></textarea>
+      <textarea id="description" placeholder="Type in your description..."></textarea>
     </div>
 
     <div class="form-control description-section">
