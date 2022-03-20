@@ -68,8 +68,6 @@ async function saveNewTask(i) {
 async function deleteTask(i) {
     allTasks.splice(i, 1);
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    profiles.splice(i,1);
-    await backend.setItem('profiles', JSON.stringify(profiles));
     closePopup();
     generateHeader();
     generateFrontend();
