@@ -48,7 +48,6 @@ function createTask() {
   allTasks.push(task);
   backend.setItem('allTasks', JSON.stringify(allTasks))
   // backend.setItem('profiles', JSON.stringify(profiles))
-  console.log('ist drin')
   clearForm();
 }
 /**
@@ -70,7 +69,7 @@ function chooseAssignedTo() {
   document.getElementById('selectId').innerHTML = ''
   for (let i = 0; i < profiles.length; i++) {
     document.getElementById('selectId').innerHTML += `
-      <option>${profiles[i]['name']}, ${profiles[i]['email']}</option>
+      <option value="${profiles[i]['id']}">${profiles[i]['name']}, ${profiles[i]['email']}</option>
   `;
   }
 
