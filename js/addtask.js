@@ -54,7 +54,7 @@ function createTask() {
     console.log('selected user:', user.value);
     console.log(typeof (eval(user.value)))
   } else {
-    console.log('not selected')
+    alert('first select an User')
   }
 
   // backend.setItem('profiles', JSON.stringify(profiles))
