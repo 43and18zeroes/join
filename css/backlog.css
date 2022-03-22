@@ -25,6 +25,25 @@
     background-color: var(--secondary-color);
 }
 
+.color_Frontend{
+    border-left:15px solid yellow;
+}
+
+.color_Marketing{
+    border-left:15px solid blue;
+}
+
+.color_Sales{
+    border-left:15px solid green;
+}
+
+.color_Design{
+    border-left:15px solid pink;
+}
+
+.color_Backend{
+    border-left:15px solid red;
+}
 
 .pencil-design{
     margin-bottom:2vh;

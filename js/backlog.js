@@ -20,10 +20,11 @@ function generateFrontend() {
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
         const profileID = element['user']-1;
+        const category = allTasks[i]['category'];
         document.getElementById('mainbody').innerHTML +=
         `
         <div id="task-field">
-            <div class="task-title col-4 card-design-left">
+            <div id="left-card-color${i}" class="task-title col-4 card-design-left">
                 <p>${profiles[profileID]['name']} ${profiles[profileID]['email']}</p>
             </div>
             <div class="task-category col-2 card-design">
@@ -37,7 +38,13 @@ function generateFrontend() {
             </div>
         </div>
         `;
+        addColor(i,category);
     }
+}
+
+function addColor(i, category){
+    document.getElementById(`left-card-color${i}`).classList.add(`color_${category}`);
+    console.log(`color_${category}`);
 }
 
 //onclick function to start the chain
