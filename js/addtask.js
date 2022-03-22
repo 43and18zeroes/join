@@ -36,7 +36,7 @@ function createTask() {
   let category = document.getElementById('category');
   let status = document.getElementById('status');
   let description = document.getElementById('description');
-  let user = +document.getElementById('selectId').value;
+  let user = document.getElementById('selectId');
 
   let task = {
     'id': time.getTime(),
@@ -45,17 +45,17 @@ function createTask() {
     'category': category.value,
     'status': status.value,
     'description': description.value,
-    'user': user
+    'user': user.value,
   };
 
   if (user.value == 1 || user.value == 2 || user.value == 3) {
     allTasks.push(task);
     backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log('selected user:', user.value);
+    console.log(typeof (eval(user.value)))
   } else {
     console.log('not selected')
   }
-
 
   // backend.setItem('profiles', JSON.stringify(profiles))
   clearForm();
