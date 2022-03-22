@@ -1,4 +1,7 @@
+//todo: add profiles & allTasks to main.js
 setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
+
+console.log(document.getElementById('selectId'))
 
 let profiles = [{
     'name': 'Addy W.',
@@ -45,8 +48,15 @@ function createTask() {
     'user': user.value,
   };
 
-  allTasks.push(task);
-  backend.setItem('allTasks', JSON.stringify(allTasks))
+  if (user.value == 1 || user.value == 2 || user.value == 3) {
+    allTasks.push(task);
+    backend.setItem('allTasks', JSON.stringify(allTasks));
+    console.log('selected user:', user.value);
+  } else {
+    console.log('not selected')
+  }
+
+
   // backend.setItem('profiles', JSON.stringify(profiles))
   clearForm();
 }
@@ -54,13 +64,14 @@ function createTask() {
  * this function clears the Form
  */
 function clearForm() {
+  let user = document.getElementById('selectId');
   document.getElementById('selectId').classList.add('d-none');
-
   title.value = '';
   date.value = '';
   category.value = '';
   status.value = '';
   description.value = '';
+  user.value = null;
 }
 
 function chooseAssignedTo() {
@@ -71,6 +82,7 @@ function chooseAssignedTo() {
     document.getElementById('selectId').innerHTML += `
       <option value="${profiles[i]['id']}">${profiles[i]['name']}, ${profiles[i]['email']}</option>
   `;
+
   }
 
 }
