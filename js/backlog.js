@@ -53,12 +53,10 @@ function closePopup() {
 
 //Saves the new Task in the backend, with values given by the input fields
 async function saveNewTask(i) {
-    //profiles[i]['name'] = document.getElementById('name-input').value;
-    //profiles[i]['email'] = document.getElementById('email-input').value;
+    allTasks[i]['user'] = +document.getElementById('popup-select').value;
     allTasks[i]['category'] = document.getElementById('category-input').value;
     allTasks[i]['description'] = document.getElementById('description-input').value;
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    await backend.setItem('profiles', JSON.stringify(profiles));
     closePopup();
     generateHeader();
     generateFrontend();
@@ -87,8 +85,11 @@ function generatePopup(i) {
             <p><b>Current details:</b> ${allTasks[i]['description']}</p>
         </div>
         <div id="pop-up-submit">
-            <input type="text" id="name-input" placeholder="Neuen Namen eingeben..">
-            <input type="text" id="email-input" placeholder="Neue E-Mail eingeben..">
+            <select class="" id="popup-select">
+                <option value="1">Addy W., soundso@email.com</option>
+                <option value="2">Alexander K., soundso@email.com</option>
+                <option value="3">Christoph W., soundso@email.com</option>
+            </select>
             <input type="text" id="category-input" placeholder="Neue Kategorie eingeben..">
             <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
             <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
