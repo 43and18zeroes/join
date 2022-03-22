@@ -11,7 +11,6 @@ async function renderBacklog() {
 async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-    profiles = JSON.parse(backend.getItem('profiles')) || [];
 }
 
 //print the given attributes of allTasks JSON
@@ -20,11 +19,12 @@ function generateFrontend() {
     generateHeader();
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
+        const profileID = element['user']-1;
         document.getElementById('mainbody').innerHTML +=
-            `
+        `
         <div id="task-field">
             <div class="task-title col-4 card-design-left">
-                <p>${profiles[i]['name']} ${profiles[i]['email']}</p>
+                <p>${profiles[profileID]['name']} ${profiles[profileID]['email']}</p>
             </div>
             <div class="task-category col-2 card-design">
                 <p>${element['category']}</p>
@@ -36,7 +36,6 @@ function generateFrontend() {
                 <img class="pencil-icon" src="../img/pencil.ico" onclick="editBacklog(${i})">
             </div>
         </div>
-
         `;
     }
 }
@@ -54,12 +53,10 @@ function closePopup() {
 
 //Saves the new Task in the backend, with values given by the input fields
 async function saveNewTask(i) {
-    profiles[i]['name'] = document.getElementById('name-input').value;
-    profiles[i]['email'] = document.getElementById('email-input').value;
-    allTasks[i]['category'] = document.getElementById('category-input').value;
+    allTasks[i]['user'] = +document.getElementById('popup-select').value;
+    allTasks[i]['category'] = document.getElementById('popup-category').value;
     allTasks[i]['description'] = document.getElementById('description-input').value;
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    await backend.setItem('profiles', JSON.stringify(profiles));
     closePopup();
     generateHeader();
     generateFrontend();
@@ -77,18 +74,29 @@ async function deleteTask(i) {
 function generatePopup(i) {
     document.getElementById('pop-up-window').innerHTML = ``;
     document.getElementById('pop-up-window').classList.remove('dont-show');
+    const element = allTasks[i];
+    const profileID = element['user']-1;
     document.getElementById('pop-up-window').innerHTML +=
         `
     <div id="pop-up-content">
         <div id="pop-up-display">
-            <p><b>Currently assigned to:</b> ${profiles[i]['name']} ${profiles[i]['email']}</p>
+            <p><b>Currently assigned to:</b> ${profiles[profileID]['name']} ${profiles[profileID]['email']}</p>
             <p><b>Current category:</b> ${allTasks[i]['category']}</p>
             <p><b>Current details:</b> ${allTasks[i]['description']}</p>
         </div>
         <div id="pop-up-submit">
-            <input type="text" id="name-input" placeholder="Neuen Namen eingeben..">
-            <input type="text" id="email-input" placeholder="Neue E-Mail eingeben..">
-            <input type="text" id="category-input" placeholder="Neue Kategorie eingeben..">
+            <select class="" id="popup-select">
+                <option value="1">Addy W., soundso@email.com</option>
+                <option value="2">Alexander K., soundso@email.com</option>
+                <option value="3">Christoph W., soundso@email.com</option>
+            </select>
+            <select type="text" id="popup-category" placeholder="Category">
+                <option>Marketing</option>
+                <option>Sales</option>
+                <option>Design</option>
+                <option>Frontend</option>
+                <option>Backend</option>
+            </select>
             <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
             <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
             <button id="delete-task-button" onclick="deleteTask(${i})">Task Löschen!</button>
