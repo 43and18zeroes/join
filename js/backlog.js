@@ -54,7 +54,7 @@ function closePopup() {
 //Saves the new Task in the backend, with values given by the input fields
 async function saveNewTask(i) {
     allTasks[i]['user'] = +document.getElementById('popup-select').value;
-    allTasks[i]['category'] = document.getElementById('category-input').value;
+    allTasks[i]['category'] = document.getElementById('popup-category').value;
     allTasks[i]['description'] = document.getElementById('description-input').value;
     await backend.setItem('allTasks', JSON.stringify(allTasks));
     closePopup();
@@ -90,7 +90,13 @@ function generatePopup(i) {
                 <option value="2">Alexander K., soundso@email.com</option>
                 <option value="3">Christoph W., soundso@email.com</option>
             </select>
-            <input type="text" id="category-input" placeholder="Neue Kategorie eingeben..">
+            <select type="text" id="popup-category" placeholder="Category">
+                <option>Marketing</option>
+                <option>Sales</option>
+                <option>Design</option>
+                <option>Frontend</option>
+                <option>Backend</option>
+            </select>
             <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
             <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
             <button id="delete-task-button" onclick="deleteTask(${i})">Task Löschen!</button>
