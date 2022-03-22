@@ -76,11 +76,13 @@ async function deleteTask(i) {
 function generatePopup(i) {
     document.getElementById('pop-up-window').innerHTML = ``;
     document.getElementById('pop-up-window').classList.remove('dont-show');
+    const element = allTasks[i];
+    const profileID = element['user']-1;
     document.getElementById('pop-up-window').innerHTML +=
         `
     <div id="pop-up-content">
         <div id="pop-up-display">
-            <p><b>Currently assigned to:</b> ${profiles[i]['name']} ${profiles[i]['email']}</p>
+            <p><b>Currently assigned to:</b> ${profiles[profileID]['name']} ${profiles[profileID]['email']}</p>
             <p><b>Current category:</b> ${allTasks[i]['category']}</p>
             <p><b>Current details:</b> ${allTasks[i]['description']}</p>
         </div>
