@@ -15,14 +15,14 @@ header {
 
 .form {
   border-radius: 10px;
-  background-color: var(--secondary-color);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  overflow: scroll;
+  height: auto !important;
 }
 
 .form-control {
+  background-color: var(--secondary-color) !important;
   display: flex !important;
   flex-direction: column;
   width: 45% !important;
@@ -41,12 +41,44 @@ input {
   max-width: 100%;
 }
 
+input,
+textarea,
+select {
+  font-size: 14px;
+  border: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
 select {
   height: 60px;
   background-color: white;
   cursor: pointer;
   border: 1px solid gray;
   border-radius: 3px;
+}
+
+input,
+select:not(textarea) {
+  text-align: center;
+}
+
+.category {
+  position: relative;
+}
+
+.category select {
+  display: none;
+}
+
+.option_Marketing {
+  background-color: red;
+  background-position-x: 10;
+  background-position: left;
+
 }
 
 .description-section {
@@ -56,6 +88,7 @@ select {
 .description-section textarea {
   height: 200px;
   resize: none;
+  padding: 10px;
 }
 
 .profiles {
@@ -137,10 +170,33 @@ button {
   .form-control {
     width: 90% !important;
   }
+
+  input,
+  textarea,
+  select {
+    text-align: center;
+  }
+
+  .profiles {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 408px) {
   .profiles {
     flex-direction: column;
+  }
+
+  .profile-img {
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    height: auto;
+  }
+
+  .buttons {
+    justify-content: center;
   }
 }

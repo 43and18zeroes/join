@@ -117,11 +117,11 @@ function renderHTML() {
     <div class="form-control">
       <label for="category">Category</label>
       <select type="text" id="category" placeholder="Management">
-        <option>Marketing</option>
-        <option>Sales</option>
-        <option>Design</option>
-        <option>Frontend</option>
-        <option>Backend</option>
+        <option class="option_Marketing">Marketing</option>
+        <option class="option_Sales">Sales</option>
+        <option class="option_Design">Design</option>
+        <option class="option_Frontend">Frontend</option>
+        <option class="option_Backend">Backend</option>
       </select>
     </div>
 
