@@ -72,6 +72,10 @@ pop-up in index.html with all associated classes and IDs
     right:50px;
 }
 
+#closebutton:hover{
+    cursor:pointer;
+}
+
 #pop-up-display{
     margin-left:16px;
     margin-top:16px;

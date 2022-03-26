@@ -20,6 +20,7 @@ function generateFrontend() {
     for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
         const profileID = element['user']-1;
+        //const category is important for the addColor function
         const category = allTasks[i]['category'];
         document.getElementById('mainbody').innerHTML +=
         `
@@ -42,10 +43,7 @@ function generateFrontend() {
     }
 }
 
-function addColor(i, category){
-    document.getElementById(`left-card-color${i}`).classList.add(`color_${category}`);
-    console.log(`color_${category}`);
-}
+
 
 //onclick function to start the chain
 function editBacklog(i) {
@@ -111,6 +109,12 @@ function generatePopup(i) {
     </div>
     <img id="closebutton" src="img/xclose.ico" onclick="closePopup(${i})">
     `
+}
+
+//Adds the color accent to each task card
+function addColor(i, category){
+    document.getElementById(`left-card-color${i}`).classList.add(`color_${category}`);
+    console.log(`color_${category}`);
 }
 
 //Generates titles of backlog page
