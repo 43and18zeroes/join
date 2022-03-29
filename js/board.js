@@ -172,7 +172,7 @@ function openBoardPopup(i) {
     document.getElementById('pop-up-window').innerHTML = ``;
     document.getElementById('pop-up-window').classList.remove('dont-show');
     const element = allTasks[i];
-    const profileID = element['user'];
+    const profileID = element['user']-1;
     document.getElementById('pop-up-window').innerHTML +=
         `
     <div id="pop-up-content">
