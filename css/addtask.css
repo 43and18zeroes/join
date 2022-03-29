@@ -76,10 +76,10 @@ select:not(textarea) {
 
 .option_Marketing {
   background-color: red;
-  background-position-x: 10;
+  height: 2px;
   background-position: left;
-
 }
+
 
 .description-section {
   height: 200px;
