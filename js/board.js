@@ -171,15 +171,15 @@ function removeHighlight(id) {
 function openBoardPopup(i) {
     document.getElementById('pop-up-window').innerHTML = ``;
     document.getElementById('pop-up-window').classList.remove('dont-show');
-    const element = allTasks[i];
+    const element = tickets[i];
     const profileID = element['user']-1;
     document.getElementById('pop-up-window').innerHTML +=
         `
     <div id="pop-up-content">
         <div id="pop-up-display">
             <p><b>Currently assigned to:</b> ${profiles[profileID]['name']} ${profiles[profileID]['email']}</p>
-            <p><b>Current category:</b> ${allTasks[i]['category']}</p>
-            <p><b>Current details:</b> ${allTasks[i]['description']}</p>
+            <p><b>Current category:</b> ${tickets[i]['category']}</p>
+            <p><b>Current details:</b> ${tickets[i]['description']}</p>
         </div>
         <div id="pop-up-submit">
             <select class="" id="popup-select">
