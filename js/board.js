@@ -84,7 +84,7 @@ function updateHTML() {
 
 
 function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="board__button">${element['title']}</div>`;
+    return `<div onclick="editBoardHTMLElement(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})" class="board__button">${element['title']}</div>`;
 }
 
 
@@ -156,4 +156,49 @@ function highlight(id) {
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag__area__highlight');
+}
+
+
+/**
+ * When a task element in the board is clicked
+ */
+ function editBoardHTMLElement(id) {
+    openBoardPopup(id);
+
+ }
+
+ //Opens the Popup Window
+function openBoardPopup(i) {
+    document.getElementById('pop-up-window').innerHTML = ``;
+    document.getElementById('pop-up-window').classList.remove('dont-show');
+    const element = allTasks[i];
+    const profileID = element['user'];
+    document.getElementById('pop-up-window').innerHTML +=
+        `
+    <div id="pop-up-content">
+        <div id="pop-up-display">
+            <p><b>Currently assigned to:</b> ${profiles[profileID]['name']} ${profiles[profileID]['email']}</p>
+            <p><b>Current category:</b> ${allTasks[i]['category']}</p>
+            <p><b>Current details:</b> ${allTasks[i]['description']}</p>
+        </div>
+        <div id="pop-up-submit">
+            <select class="" id="popup-select">
+                <option value="1">Addy W., soundso@email.com</option>
+                <option value="2">Alexander K., soundso@email.com</option>
+                <option value="3">Christoph W., soundso@email.com</option>
+            </select>
+            <select type="text" id="popup-category" placeholder="Category">
+                <option>Marketing</option>
+                <option>Sales</option>
+                <option>Design</option>
+                <option>Frontend</option>
+                <option>Backend</option>
+            </select>
+            <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
+            <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
+            <button id="delete-task-button" onclick="deleteTask(${i})">Task Löschen!</button>
+        </div>
+    </div>
+    <img id="closebutton" src="img/xclose.ico" onclick="closePopup(${i})">
+    `
 }
