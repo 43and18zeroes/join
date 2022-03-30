@@ -96,11 +96,11 @@ function generatePopup(i) {
                 <option value="3">Christoph W., soundso@email.com</option>
             </select>
             <select type="text" id="popup-category" placeholder="Category">
-                <option>Marketing</option>
-                <option>Sales</option>
-                <option>Design</option>
-                <option>Frontend</option>
-                <option>Backend</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="Design">Design</option>
+                <option value="Frontend">Frontend</option>
+                <option value="Backend">Backend</option>
             </select>
             <textarea id="description-input" placeholder="Add a new description.."></textarea>
             <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
@@ -109,11 +109,13 @@ function generatePopup(i) {
     </div>
     <img id="closebutton" src="img/xclose.ico" onclick="closePopup(${i})">
     `
-    addPopupDescription(i);
+    popupPreset(i);
 }
 
-//fills the textarea in the description popup with current description
-function addPopupDescription(i){
+//Set the popup selection fields to value of the current task
+function popupPreset(i){
+    document.getElementById('popup-select').value = `${allTasks[i]['user']}`;
+    document.getElementById('popup-category').value = `${allTasks[i]['category']}`;
     document.getElementById('description-input').innerHTML = `${allTasks[i]['description']}`;
 }
 
