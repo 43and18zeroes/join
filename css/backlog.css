@@ -73,3 +73,16 @@
     justify-content:center;
     
 }
+
+#description-input{
+    height:100px;
+    border: 1px solid var(--secondary-color);
+}
+
+#popup-select{
+    border: 1px solid var(--secondary-color);
+}
+
+#popup-category{
+    border: 1px solid var(--secondary-color);
+}

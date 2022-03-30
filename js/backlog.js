@@ -102,13 +102,19 @@ function generatePopup(i) {
                 <option>Frontend</option>
                 <option>Backend</option>
             </select>
-            <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
+            <textarea id="description-input" placeholder="Add a new description.."></textarea>
             <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
             <button id="delete-task-button" onclick="deleteTask(${i})">Task Löschen!</button>
         </div>
     </div>
     <img id="closebutton" src="img/xclose.ico" onclick="closePopup(${i})">
     `
+    addPopupDescription(i);
+}
+
+//fills the textarea in the description popup with current description
+function addPopupDescription(i){
+    document.getElementById('description-input').innerHTML = `${allTasks[i]['description']}`;
 }
 
 //Adds the color accent to each task card
