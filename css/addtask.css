@@ -28,12 +28,36 @@ header {
   width: 45% !important;
   height: 100px;
   margin: 10px;
+  position: relative;
+  height: 125px;
 }
 
 .form-control label {
   color: var(--main-color);
   font-weight: bold;
   margin-bottom: 10px
+}
+
+.form-control.success input {
+  border-color: #2ecc71;
+}
+
+
+.form-control.error input,
+textarea {
+  border-color: #e74c3c;
+}
+
+.form-control small {
+  color: #e74c3c;
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
 }
 
 input {
@@ -45,20 +69,25 @@ input,
 textarea,
 select {
   font-size: 14px;
-  border: none;
+  border: 2px solid var(--secondary-color);
 }
 
 input:focus,
 textarea:focus {
-  outline: none;
+  outline: 0;
+  border-color: #777;
 }
 
 select {
   height: 60px;
   background-color: white;
   cursor: pointer;
-  border: 1px solid gray;
   border-radius: 3px;
+  background-image: url(/img/chevron\ .png);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 98%;
+  appearance: none;
 }
 
 input,
@@ -66,20 +95,13 @@ select:not(textarea) {
   text-align: center;
 }
 
+select option {
+  height: 100px;
+}
+
 .category {
   position: relative;
 }
-
-.category select {
-  display: none;
-}
-
-.option_Marketing {
-  background-color: red;
-  height: 2px;
-  background-position: left;
-}
-
 
 .description-section {
   height: 200px;

@@ -1,8 +1,6 @@
 //todo: add profiles & allTasks to main.js
 setURL('http://gruppe-189.developerakademie.net/smallest_backend_ever');
 
-console.log(document.getElementById('selectId'))
-
 let profiles = [{
     'name': 'Addy W.',
     'email': 'soundso@email.com',
@@ -25,9 +23,29 @@ let allTasks = [];
 function renderAddTask() {
   renderHTML();
 }
+// Show input error message
+function showError(input, message) {
+  const formControl = input.parentElement;
+  formControl.className = 'form-control error';
+  const small = formControl.querySelector('small');
+  small.innerText = message;
+}
+
+//Show success outline
+function showSuccess(input) {
+  const formControl = input.parentElement;
+  formControl.className = 'form-control success';
+}
+
+// function checkRequired(inputArr) {
+//   inputArr.forEach((input) =>{
+//     console.log(input)
+//   });
+
+
 
 /**
- * This function is used to create a task and put the data into a JSON.
+ *Create a task and puts the data into a JSON.
  */
 function createTask() {
   let time = new Date();
@@ -48,17 +66,29 @@ function createTask() {
     'user': user.value,
   };
 
+  if (title.value == '') {
+    showError(title, 'Title is required')
+  } else {
+    showSuccess(title)
+  }
+  //   showError(title, 'Title is required!');
+  // } else {
+  //   allTasks.push(task);
+  //   backend.setItem('allTasks', JSON.stringify(allTasks));
+  //   console.log('selected user:', user.value);
+  //   console.log(typeof (eval(user.value)))
+  //   clearForm();
+  // }
   if (user.value == 1 || user.value == 2 || user.value == 3) {
     allTasks.push(task);
     backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log('selected user:', user.value);
     console.log(typeof (eval(user.value)))
+    clearForm();
   } else {
-    alert('first select an User')
+    console.log('first select an User')
   }
 
-  // backend.setItem('profiles', JSON.stringify(profiles))
-  clearForm();
 }
 /**
  * this function clears the Form
@@ -82,15 +112,18 @@ function chooseAssignedTo() {
     document.getElementById('selectId').innerHTML += `
       <option value="${profiles[i]['id']}">${profiles[i]['name']}, ${profiles[i]['email']}</option>
   `;
-
   }
-
 }
 
 async function init() {
   await downloadFromServer();
   allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }
+
+
+// form.addEventListener('submit', function (e) {
+//   checkRequired([title, description, user])
+// })
 
 /**
  * @returns all the rendered HTML elements
@@ -105,7 +138,8 @@ function renderHTML() {
   <div id="form" class="form">
     <div class="form-control">
       <label for="title" >Title</label>
-      <input type="text" id="title" required placeholder="Management meeting preparation">
+      <input type="text" id="title" placeholder="Management meeting preparation">
+      <small>Error message</small>
     </div>
 
     <div class="form-control">
@@ -119,7 +153,7 @@ function renderHTML() {
       <select type="text" id="category" placeholder="Management">
         <option>Marketing</option>
         <option>Sales</option>
-        <option>Design</option>
+        <option selected>Design</option>
         <option>Frontend</option>
         <option>Backend</option>
       </select>
@@ -129,7 +163,7 @@ function renderHTML() {
       <label for="status">Status</label>
       <select type="text" id="status">
         <option value="todo">Todo</option>
-        <option value="inprogress">In Progress</option>
+        <option value="inprogress" selected>In Progress</option>
         <option value="testing">Testing</option>
       </select>
     </div>
@@ -137,6 +171,7 @@ function renderHTML() {
     <div class="form-control description-section">
       <label for="description">Description</label>
       <textarea id="description" placeholder="Type in your description..."></textarea>
+      <small>Error message</small>
     </div>
 
     <div class="form-control description-section">
@@ -145,6 +180,7 @@ function renderHTML() {
         <img onclick="chooseAssignedTo()" id="profile" class="profile-img icon" src="../img/icons8-plus.png">
         <select class="d-none" id="selectId"></select>
       </div>
+      <small>Error message</small>
       <div class="buttons">
         <button onclick="clearForm()" id="cancel">Cancel</button>
         <button onclick="createTask()" id="createTask">Create Task</button>
