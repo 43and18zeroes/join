@@ -23,7 +23,7 @@ let allTasks = [];
 function renderAddTask() {
   renderHTML();
 }
-// Show input error message
+// Show error message
 function showError(input, message) {
   const formControl = input.parentElement;
   formControl.className = 'form-control error';
@@ -33,7 +33,7 @@ function showError(input, message) {
 
 function showErrorText(textarea, message) {
   const formControl = textarea.parentElement;
-  formControl.className = 'form-control error';
+  formControl.classList.add('error');
   const small = formControl.querySelector('small');
   small.innerText = message;
 }
@@ -45,6 +45,13 @@ function showErrorSelect(select, message) {
   small.innerText = message;
 }
 
+function showErrorUser(selectId, message) {
+  selectId = document.getElementById('selectId');
+  const formControl = selectId.parentElement;
+  formControl.classList.add('error');
+  const small = formControl.querySelector('small');
+  small.innerText = message;
+}
 
 //Show success outline
 function showSuccess(input) {
@@ -88,10 +95,16 @@ function createTask() {
   } else {
     showSuccess(date)
   }
-  if (category.value == '' || status.value == '') {
+
+  if (category.value == '') {
     showError(category, 'Choose an category')
   } else {
     showSuccess(category)
+  }
+  if (status.value == '') {
+    showError(status, 'Choose an status')
+  } else {
+    showSuccess(status)
   }
   if (description.value == '') {
     showErrorText(description, 'Describe your task')
@@ -102,11 +115,12 @@ function createTask() {
   if (user.value == 1 || user.value == 2 || user.value == 3 && title.value == !null) {
     allTasks.push(task);
     backend.setItem('allTasks', JSON.stringify(allTasks));
+    console.log('task pushed')
     clearForm();
   } else {
+    showErrorUser()
     console.log('todo: user error')
   }
-
 }
 /**
  * this function clears the Form
@@ -137,11 +151,6 @@ async function init() {
   await downloadFromServer();
   allTasks = JSON.parse(backend.getItem('allTasks')) || [];
 }
-
-
-// form.addEventListener('submit', function (e) {
-//   checkRequired([title, description, user])
-// })
 
 /**
  * @returns all the rendered HTML elements
@@ -181,8 +190,8 @@ function renderHTML() {
     <div class="form-control ">
       <label for="status">Status</label>
       <select type="text" id="status">
-        <option value="todo">Todo</option>
-        <option value="inprogress" selected>In Progress</option>
+        <option value="todo" selected>Todo</option>
+        <option value="inprogress">In Progress</option>
         <option value="testing">Testing</option>
       </select>
       <small>Error message</small>
