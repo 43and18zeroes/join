@@ -31,19 +31,31 @@ function showError(input, message) {
   small.innerText = message;
 }
 
+function showErrorText(textarea, message) {
+  const formControl = textarea.parentElement;
+  formControl.className = 'form-control error';
+  const small = formControl.querySelector('small');
+  small.innerText = message;
+}
+
+function showErrorSelect(select, message) {
+  const formControl = select.parentElement;
+  formControl.className = 'form-control error';
+  const small = formControl.querySelector('small');
+  small.innerText = message;
+}
+
+
 //Show success outline
 function showSuccess(input) {
   const formControl = input.parentElement;
   formControl.className = 'form-control success';
 }
 
-// function checkRequired(inputArr) {
-//   inputArr.forEach((input) =>{
-//     console.log(input)
-//   });
-
-
-
+function showSuccessText(textarea) {
+  const formControl = textarea.parentElement;
+  formControl.className = 'form-control success';
+}
 /**
  *Create a task and puts the data into a JSON.
  */
@@ -71,22 +83,28 @@ function createTask() {
   } else {
     showSuccess(title)
   }
-  //   showError(title, 'Title is required!');
-  // } else {
-  //   allTasks.push(task);
-  //   backend.setItem('allTasks', JSON.stringify(allTasks));
-  //   console.log('selected user:', user.value);
-  //   console.log(typeof (eval(user.value)))
-  //   clearForm();
-  // }
-  if (user.value == 1 || user.value == 2 || user.value == 3) {
+  if (date.value == '') {
+    showError(date, 'Date is required')
+  } else {
+    showSuccess(date)
+  }
+  if (category.value == '' || status.value == '') {
+    showError(category, 'Choose an category')
+  } else {
+    showSuccess(category)
+  }
+  if (description.value == '') {
+    showErrorText(description, 'Describe your task')
+  } else {
+    showSuccessText(description)
+  }
+
+  if (user.value == 1 || user.value == 2 || user.value == 3 && title.value == !null) {
     allTasks.push(task);
     backend.setItem('allTasks', JSON.stringify(allTasks));
-    console.log('selected user:', user.value);
-    console.log(typeof (eval(user.value)))
     clearForm();
   } else {
-    console.log('first select an User')
+    console.log('todo: user error')
   }
 
 }
@@ -145,7 +163,7 @@ function renderHTML() {
     <div class="form-control">
       <label for="date">Due Date</label>
       <input type="date" id="date" placeholder="02/07/20">
-    
+      <small>Error message</small>
     </div>
 
     <div class="form-control">
@@ -157,6 +175,7 @@ function renderHTML() {
         <option>Frontend</option>
         <option>Backend</option>
       </select>
+      <small>Error message</small>
     </div>
 
     <div class="form-control ">
@@ -166,6 +185,7 @@ function renderHTML() {
         <option value="inprogress" selected>In Progress</option>
         <option value="testing">Testing</option>
       </select>
+      <small>Error message</small>
     </div>
 
     <div class="form-control description-section">

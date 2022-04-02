@@ -3,6 +3,7 @@
 } */
 
 header {
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
   margin-bottom: 2em;
@@ -38,13 +39,15 @@ header {
   margin-bottom: 10px
 }
 
-.form-control.success input {
+.form-control.success input,
+.form-control.success textarea,
+.form-control.success select {
   border-color: #2ecc71;
 }
 
-
 .form-control.error input,
-textarea {
+.form-control.error textarea,
+.form-control.error select {
   border-color: #e74c3c;
 }
 
@@ -108,7 +111,7 @@ select option {
 }
 
 .description-section textarea {
-  height: 200px;
+  height: 145px;
   resize: none;
   padding: 10px;
 }
@@ -126,6 +129,10 @@ select option {
   padding: 10px;
 }
 
+.profiles .icon:hover {
+  background-color: rgba(182, 181, 181, 0.377);
+}
+
 .profile-img {
   margin-right: 5px;
   height: 60px;
@@ -133,6 +140,10 @@ select option {
   width: 60px;
   object-fit: cover;
   cursor: pointer;
+}
+
+.profiles select {
+  text-align: left;
 }
 
 .buttons {
