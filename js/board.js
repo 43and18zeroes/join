@@ -188,17 +188,43 @@ function openBoardPopup(i) {
                 <option value="3">Christoph W., soundso@email.com</option>
             </select>
             <select type="text" id="popup-category" placeholder="Category">
-                <option>Marketing</option>
-                <option>Sales</option>
-                <option>Design</option>
-                <option>Frontend</option>
-                <option>Backend</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="Design">Design</option>
+                <option value="Frontend">Frontend</option>
+                <option value="Backend">Backend</option>
             </select>
             <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
-            <button id="save-task-button" onclick="saveNewTask(${i})">Task speichern</button>
-            <button id="delete-task-button" onclick="deleteTask(${i})">Task Löschen!</button>
+            <button id="save-task-button" onclick="saveNewTaskBoard(${i})">Task speichern</button>
+            <button id="delete-task-button" onclick="deleteTaskBoard(${i})">Task Löschen!</button>
         </div>
     </div>
     <img id="closebutton" src="img/xclose.ico" onclick="closePopup(${i})">
     `
+
+    popupPresetBoard(i);
+}
+
+//Set the popup selection fields to value of the current task
+function popupPresetBoard(i){
+    document.getElementById('popup-select').value = `${tickets[i]['user']}`;
+    document.getElementById('popup-category').value = `${tickets[i]['category']}`;
+    document.getElementById('description-input').value = `${tickets[i]['description']}`;
+}
+
+//Saves the new Task in the backend, with values given by the input fields
+async function saveNewTaskBoard(i) {
+    tickets[i]['user'] = +document.getElementById('popup-select').value;
+    tickets[i]['category'] = document.getElementById('popup-category').value;
+    tickets[i]['description'] = document.getElementById('description-input').value;
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    closePopup();
+    updateHTML();
+}
+
+async function deleteTaskBoard(i) {
+    tickets.splice(i, 1);
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    closePopup();
+    updateHTML();
 }
