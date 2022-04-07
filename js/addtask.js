@@ -206,7 +206,7 @@ function renderHTML() {
     <div class="form-control description-section">
       <label for="profile">Assigned To</label>
       <div id="profiles" class="profiles">
-        <img onclick="chooseAssignedTo()" id="profile" class="profile-img icon" src="../img/icons8-plus.png">
+        <img onclick="chooseAssignedTo()" id="profile" class="profile-img icon" src="./img/icons8-plus.png">
         <select class="d-none" id="selectId"></select>
       </div>
       <small>Error message</small>
