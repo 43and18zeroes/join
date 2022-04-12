@@ -217,7 +217,7 @@ async function saveNewTaskBoard(i) {
     tickets[i]['user'] = +document.getElementById('popup-select').value;
     tickets[i]['category'] = document.getElementById('popup-category').value;
     tickets[i]['description'] = document.getElementById('description-input').value;
-    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('allTasks', JSON.stringify(tickets));
     closePopup();
     updateHTML();
 }
