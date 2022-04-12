@@ -72,6 +72,20 @@
     background-color: var(--accent-color);
 }
 
+.pop-up__board {
+    overflow: auto;
+    border-radius: 2px;
+}
+
+.pop-up-submit__board {
+    padding-bottom: 16px;
+}
+
+.pop-up-submit__board h3 {
+    font-weight: 400;
+    font-size: 16px;
+}
+
 @media only screen and (max-width: 991px) {
     .board__row {
         height: calc(50% - 10px);

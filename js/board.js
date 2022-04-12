@@ -175,18 +175,15 @@ function openBoardPopup(i) {
     const profileID = element['user']-1;
     document.getElementById('pop-up-window').innerHTML +=
         `
-    <div id="pop-up-content">
-        <div id="pop-up-display">
-            <p><b>Currently assigned to:</b> ${profiles[profileID]['name']} ${profiles[profileID]['email']}</p>
-            <p><b>Current category:</b> ${tickets[i]['category']}</p>
-            <p><b>Current details:</b> ${tickets[i]['description']}</p>
-        </div>
-        <div id="pop-up-submit">
+    <div id="pop-up-content" class="pop-up__board">
+        <div id="pop-up-submit" class="pop-up-submit__board">
+            <h3>User:</h3>
             <select class="" id="popup-select">
                 <option value="1">Addy W., soundso@email.com</option>
                 <option value="2">Alexander K., soundso@email.com</option>
                 <option value="3">Christoph W., soundso@email.com</option>
             </select>
+            <h3>Category:</h3>
             <select type="text" id="popup-category" placeholder="Category">
                 <option value="Marketing">Marketing</option>
                 <option value="Sales">Sales</option>
@@ -194,6 +191,14 @@ function openBoardPopup(i) {
                 <option value="Frontend">Frontend</option>
                 <option value="Backend">Backend</option>
             </select>
+            <h3>Status:</h3>
+            <select type="text" id="popup-status" placeholder="Status">
+                <option value="todo">TO DO</option>
+                <option value="inprogress">IN PROGRESS</option>
+                <option value="testing">TESTING</option>
+                <option value="done">DONE</option>
+            </select>
+            <h3>Description:</h3>
             <input type="text" id="description-input" placeholder="Neue Beschreibung eingeben..">
             <button id="save-task-button" onclick="saveNewTaskBoard(${i})">Task speichern</button>
             <button id="delete-task-button" onclick="deleteTaskBoard(${i})">Task Löschen!</button>
@@ -209,6 +214,7 @@ function openBoardPopup(i) {
 function popupPresetBoard(i){
     document.getElementById('popup-select').value = `${tickets[i]['user']}`;
     document.getElementById('popup-category').value = `${tickets[i]['category']}`;
+    document.getElementById('popup-status').value = `${tickets[i]['status']}`;
     document.getElementById('description-input').value = `${tickets[i]['description']}`;
 }
 
@@ -216,6 +222,7 @@ function popupPresetBoard(i){
 async function saveNewTaskBoard(i) {
     tickets[i]['user'] = +document.getElementById('popup-select').value;
     tickets[i]['category'] = document.getElementById('popup-category').value;
+    tickets[i]['status'] = document.getElementById('popup-status').value;
     tickets[i]['description'] = document.getElementById('description-input').value;
     await backend.setItem('allTasks', JSON.stringify(tickets));
     closePopup();
