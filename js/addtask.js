@@ -44,7 +44,7 @@ function showErrorSelect(select, message) {
   const small = formControl.querySelector('small');
   small.innerText = message;
 }
-
+/** 
 function showErrorUser(selectId, message) {
   selectId = document.getElementById('selectId');
   const formControl = selectId.parentElement;
@@ -52,6 +52,7 @@ function showErrorUser(selectId, message) {
   const small = formControl.querySelector('small');
   small.innerText = message;
 }
+*/
 
 //Show success outline
 function showSuccess(input) {
@@ -61,7 +62,7 @@ function showSuccess(input) {
 
 function showSuccessText(textarea) {
   const formControl = textarea.parentElement;
-  formControl.className = 'form-control success';
+  formControl.classList.add('success');
 }
 /**
  *Create a task and puts the data into a JSON.
@@ -85,43 +86,28 @@ function createTask() {
     'user': user.value,
   };
 
-  if (title.value == '') {
-    showError(title, 'Title is required')
-  } else {
-    showSuccess(title)
-  }
-  if (date.value == '') {
-    showError(date, 'Date is required')
-  } else {
-    showSuccess(date)
-  }
-
-  if (category.value == '') {
-    showError(category, 'Choose an category')
-  } else {
-    showSuccess(category)
-  }
-  if (status.value == '') {
-    showError(status, 'Choose an status')
-  } else {
-    showSuccess(status)
-  }
-  if (description.value == '') {
-    showErrorText(description, 'Describe your task')
-  } else {
-    showSuccessText(description)
-  }
+ successOrErrorMassage(title, 'title is required');
+ successOrErrorMassage(date, 'date is required');
+ successOrErrorMassage(category, 'choose an Category');
+ successOrErrorMassage(status, 'status is required');
+ successOrErrorMassage(description, 'description is required');
 
   if (user.value == 1 || user.value == 2 || user.value == 3 && title.value == !null) {
     allTasks.push(task);
     backend.setItem('allTasks', JSON.stringify(allTasks));
     console.log('task pushed')
     clearForm();
+  } //todo! Show Error User
+}
+
+function successOrErrorMassage(category, description){
+  if (category.value == '') {
+    showError(category, description);
   } else {
-    showErrorUser()
-    console.log('todo: user error')
+    showSuccess(category);
   }
 }
+
 /**
  * this function clears the Form
  */
